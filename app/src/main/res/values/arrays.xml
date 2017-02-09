@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="board_codes">
+        <item>au</item>
+        <item>bi</item>
+        <item>biz</item>
+        <item>bo</item>
+        <item>c</item>
+        <item>em</item>
+        <item>fa</item>
+        <item>fiz</item>
+        <item>fl</item>
+        <item>ftb</item>
+        <item>gd</item>
+        <item>hi</item>
+        <item>hw</item>
+        <item>me</item>
+        <item>mlp</item>
+        <item>mo</item>
+        <item>mu</item>
+        <item>ne</item>
+        <item>po</item>
+        <item>pr</item>
+        <item>psy</item>
+        <item>ra</item>
+        <item>re</item>
+        <item>s</item>
+        <item>sci</item>
+        <item>sn</item>
+        <item>sp</item>
+        <item>spc</item>
+        <item>t</item>
+        <item>tv</item>
+        <item>un</item>
+        <item>w</item>
+        <item>wh</item>
+        <item>wm</item>
+        <item>wp</item>
+        <item>di</item>
+        <item>diy</item>
+        <item>pa</item>
+        <item>p</item>
+        <item>trv</item>
+        <item>cg</item>
+        <item>gb</item>
+        <item>tes</item>
+        <item>v</item>
+        <item>vg</item>
+        <item>a</item>
+        <item>fd</item>
+        <item>ma</item>
+        <item>vn</item>
+        <item>d</item>
+        <item>b</item>
+        <item>fag</item>
+        <item>soc</item>
+        <item>r</item>
+        <item>abu</item>
+        <item>fg</item>
+        <item>fur</item>
+        <item>g</item>
+        <item>ga</item>
+        <item>vape</item>
+        <item>h</item>
+        <item>ho</item>
+        <item>hc</item>
+        <item>e</item>
+        <item>fet</item>
+        <item>sex</item>
+    </string-array>
+
+
+</resources>
