@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/layout-v11/notification_media_action.xml",
+        "source": "/home/artem/.android/build-cache/776f517a295af1a8175aedad0a793e3e85a508d0/output/res/layout-v11/notification_media_action.xml"
+    },
+    {
+        "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/layout-v11/notification_media_cancel_action.xml",
+        "source": "/home/artem/.android/build-cache/776f517a295af1a8175aedad0a793e3e85a508d0/output/res/layout-v11/notification_media_cancel_action.xml"
+    },
+    {
+        "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/layout-v11/notification_template_big_media_custom.xml",
+        "source": "/home/artem/.android/build-cache/776f517a295af1a8175aedad0a793e3e85a508d0/output/res/layout-v11/notification_template_big_media_custom.xml"
+    },
+    {
+        "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/layout-v11/notification_template_big_media.xml",
+        "source": "/home/artem/.android/build-cache/776f517a295af1a8175aedad0a793e3e85a508d0/output/res/layout-v11/notification_template_big_media.xml"
+    },
+    {
+        "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/layout-v11/notification_template_big_media_narrow.xml",
+        "source": "/home/artem/.android/build-cache/776f517a295af1a8175aedad0a793e3e85a508d0/output/res/layout-v11/notification_template_big_media_narrow.xml"
+    },
+    {
+        "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/layout-v11/notification_template_big_media_narrow_custom.xml",
+        "source": "/home/artem/.android/build-cache/776f517a295af1a8175aedad0a793e3e85a508d0/output/res/layout-v11/notification_template_big_media_narrow_custom.xml"
+    }
+]

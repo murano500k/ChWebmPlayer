@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/anim-v21/design_bottom_sheet_slide_out.xml",
+        "source": "/home/artem/.android/build-cache/75f07d396ea6b6c398876101a23c8e6b59f884dd/output/res/anim-v21/design_bottom_sheet_slide_out.xml"
+    },
+    {
+        "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/anim-v21/design_bottom_sheet_slide_in.xml",
+        "source": "/home/artem/.android/build-cache/75f07d396ea6b6c398876101a23c8e6b59f884dd/output/res/anim-v21/design_bottom_sheet_slide_in.xml"
+    }
+]

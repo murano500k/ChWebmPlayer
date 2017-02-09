@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/color-v11/abc_background_cache_hint_selector_material_light.xml",
+        "source": "/home/artem/.android/build-cache/776f517a295af1a8175aedad0a793e3e85a508d0/output/res/color-v11/abc_background_cache_hint_selector_material_light.xml"
+    },
+    {
+        "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/color-v11/abc_background_cache_hint_selector_material_dark.xml",
+        "source": "/home/artem/.android/build-cache/776f517a295af1a8175aedad0a793e3e85a508d0/output/res/color-v11/abc_background_cache_hint_selector_material_dark.xml"
+    }
+]

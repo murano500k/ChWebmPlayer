@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/drawable-anydpi-v21/design_ic_visibility.xml",
+        "source": "/home/artem/.android/build-cache/75f07d396ea6b6c398876101a23c8e6b59f884dd/output/res/drawable-anydpi-v21/design_ic_visibility.xml"
+    },
+    {
+        "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/drawable-anydpi-v21/design_ic_visibility_off.xml",
+        "source": "/home/artem/.android/build-cache/75f07d396ea6b6c398876101a23c8e6b59f884dd/output/res/drawable-anydpi-v21/design_ic_visibility_off.xml"
+    }
+]
