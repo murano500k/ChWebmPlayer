@@ -33,6 +33,8 @@ import static com.stc.chviewer.Constants.COLUMNS_LANDSCAPE;
 import static com.stc.chviewer.Constants.COLUMNS_PORTRAIT;
 import static com.stc.chviewer.Constants.ITEMS_LIST_EXTRA;
 import static com.stc.chviewer.Constants.ITEM_INDEX_EXTRA;
+import static com.stc.chviewer.Constants.SETTINGS;
+import static com.stc.chviewer.Constants.SETTINGS_KEY_SHOW_HELP;
 import static com.stc.chviewer.Constants.THREAD_EXTRA;
 
 public class ThreadsActivity extends AppCompatActivity implements ThreadsContract.View, PlayableItemFragment.OnListFragmentInteractionListener, PlaylistItemFragment.OnListFragmentInteractionListener {
@@ -155,6 +157,19 @@ public class ThreadsActivity extends AppCompatActivity implements ThreadsContrac
         transaction.commit();
         toolbar.removeView(searchView);
         updateTitle(thread.getThreadTitle());
+        showHelpToastIfNeeded();
+
+    }
+
+
+    private void showHelpToastIfNeeded(){
+        if(shouldShowHelpToast()){
+            Toast.makeText(this, "Select item to start playback. All threads will be included in playlist automatically", Toast.LENGTH_SHORT).show();
+            getSharedPreferences(SETTINGS,MODE_PRIVATE ).edit().putBoolean(SETTINGS_KEY_SHOW_HELP, true).apply();
+        }
+    }
+    private boolean shouldShowHelpToast(){
+        return getSharedPreferences(SETTINGS,MODE_PRIVATE ).getBoolean(SETTINGS_KEY_SHOW_HELP, false);
     }
 
     @Override

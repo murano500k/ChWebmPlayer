@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.stc.chviewer"
     tools:ignore="MissingLeanbackLauncher">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -19,24 +20,18 @@
         android:label="@string/application_name"
         android:largeHeap="true"
         android:theme="@style/AppTheme">
-
-
         <activity android:name=".activitythreads.ThreadsActivity">
-
             <intent-filter>
                 <action android:name="ACTION_SHOW_THREADS" />
             </intent-filter>
         </activity>
-
-
-
         <activity android:name=".boardselect.BoardSelectActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".PlayerActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
@@ -60,7 +55,6 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

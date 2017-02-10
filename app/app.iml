@@ -43,6 +43,13 @@
       <sourceFolder url="file://$MODULE_DIR$/src/noExtensionsDebug/jni" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/noExtensionsDebug/rs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/noExtensionsDebug/shaders" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/buildout/generated/source/r/androidTest/noExtensions/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/buildout/generated/source/aidl/androidTest/noExtensions/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/buildout/generated/source/buildConfig/androidTest/noExtensions/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/buildout/generated/source/rs/androidTest/noExtensions/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/buildout/generated/source/apt/androidTest/noExtensions/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/buildout/generated/res/rs/androidTest/noExtensions/debug" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/buildout/generated/res/resValues/androidTest/noExtensions/debug" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testNoExtensionsDebug/res" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testNoExtensionsDebug/resources" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/testNoExtensionsDebug/assets" type="java-test-resource" />
@@ -51,13 +58,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/testNoExtensionsDebug/jni" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testNoExtensionsDebug/rs" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/testNoExtensionsDebug/shaders" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/buildout/generated/source/r/androidTest/noExtensions/debug" isTestSource="true" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/buildout/generated/source/aidl/androidTest/noExtensions/debug" isTestSource="true" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/buildout/generated/source/buildConfig/androidTest/noExtensions/debug" isTestSource="true" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/buildout/generated/source/rs/androidTest/noExtensions/debug" isTestSource="true" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/buildout/generated/source/apt/androidTest/noExtensions/debug" isTestSource="true" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/buildout/generated/res/rs/androidTest/noExtensions/debug" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/buildout/generated/res/resValues/androidTest/noExtensions/debug" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/noExtensions/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/noExtensions/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/noExtensions/assets" type="java-resource" />

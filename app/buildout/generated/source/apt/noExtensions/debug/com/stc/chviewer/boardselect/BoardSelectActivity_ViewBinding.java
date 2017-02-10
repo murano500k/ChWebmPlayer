@@ -5,7 +5,6 @@ import android.support.annotation.CallSuper;
 import android.support.annotation.UiThread;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ListView;
 import butterknife.Unbinder;
 import butterknife.internal.Utils;
 import java.lang.IllegalStateException;
@@ -23,7 +22,6 @@ public class BoardSelectActivity_ViewBinding implements Unbinder {
   public BoardSelectActivity_ViewBinding(BoardSelectActivity target, View source) {
     this.target = target;
 
-    target.listView = Utils.findRequiredViewAsType(source, 2131624073, "field 'listView'", ListView.class);
     target.toolbar = Utils.findRequiredViewAsType(source, 2131624072, "field 'toolbar'", Toolbar.class);
   }
 
@@ -34,7 +32,6 @@ public class BoardSelectActivity_ViewBinding implements Unbinder {
     if (target == null) throw new IllegalStateException("Bindings already cleared.");
     this.target = null;
 
-    target.listView = null;
     target.toolbar = null;
   }
 }

@@ -1,5 +1,6 @@
 package com.stc.chviewer.boardselect;
 
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,40 +8,27 @@ import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.stc.chviewer.R;
 import com.stc.chviewer.activitythreads.ThreadsActivity;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static com.stc.chviewer.Constants.ACTION_SHOW_THREADS;
 import static com.stc.chviewer.Constants.BOARD_TITLE_EXTRA;
-import static com.stc.chviewer.Constants.KEY_BOARD_NAME;
-import static com.stc.chviewer.Constants.SETTINGS;
-import static com.stc.chviewer.Constants.SETTINGS_KEY_SHOW_HELP;
 
-public class BoardSelectActivity extends AppCompatActivity {
+public class BoardSelectActivity extends AppCompatActivity implements BoardListFragment.OnListFragmentInteractionListener{
     private static final String TAG = "BoardSelectActivity";
+    private static final String FRAGMENT_BOARD_LIST = "FRAGMENT_BOARD_LIST";
     SearchView searchView;
 
-    @BindView(R.id.board_list)
-    ListView listView;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
-    java.util.List<HashMap<java.lang.String, String>> data;
-
+    String[] data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,27 +59,15 @@ public class BoardSelectActivity extends AppCompatActivity {
         toolbar.addView(searchView, layoutParams);
         showBoardsList();
 
-
-
     }
     private void showBoardsList(){
-        data=new ArrayList<>();
-        for(String s: getResources().getStringArray(R.array.board_codes)){
-            HashMap<java.lang.String, String> map =new HashMap<>();
-            map.put(KEY_BOARD_NAME, s);
-            data.add(map);
-        }
-        String fromArray[]={KEY_BOARD_NAME};
-        int to[]={android.R.id.text1};
-        ListAdapter adapter=new SimpleAdapter( this,data, android.R.layout.simple_list_item_1, fromArray, to);
+        Log.d(TAG, "showBoardsList:");
+        data= getResources().getStringArray(R.array.board_codes);
+        BoardListFragment boardListFragment = BoardListFragment.newInstance(data);
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                boardSelected(data.get(position).get(KEY_BOARD_NAME));
-            }
-        });
-        listView.setAdapter(adapter);
+        FragmentTransaction transaction=getFragmentManager().beginTransaction();
+        transaction.add(R.id.container, boardListFragment, FRAGMENT_BOARD_LIST);
+
     }
     private void boardSelected(String boardName){
         Log.d(TAG, "boardSelected: "+ boardName);
@@ -102,16 +78,9 @@ public class BoardSelectActivity extends AppCompatActivity {
 
     }
 
-    private void showHelpToastIfNeeded(){
-        if(shouldShowHelpToast()){
-            Toast.makeText(this, "Select item to start playback. All threads will be included in playlist automatically", Toast.LENGTH_SHORT).show();
-            getSharedPreferences(SETTINGS,MODE_PRIVATE ).edit().putBoolean(SETTINGS_KEY_SHOW_HELP, true).apply();
-        }
-    }
-    private boolean shouldShowHelpToast(){
-        return getSharedPreferences(SETTINGS,MODE_PRIVATE ).getBoolean(SETTINGS_KEY_SHOW_HELP, false);
-    }
 
-
+    @Override
+    public void onListFragmentInteraction(String board) {
+        boardSelected(board);
+    }
 }
-
