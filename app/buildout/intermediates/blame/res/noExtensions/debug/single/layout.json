@@ -12,12 +12,12 @@
         "source": "/home/artem/projects/ChWebmPlayer/app/src/main/res/layout/activity_board_select.xml"
     },
     {
-        "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/layout/abc_screen_toolbar.xml",
-        "source": "/home/artem/.android/build-cache/e2b7e0ded733648b39ffef3c712776ce38f12045/output/res/layout/abc_screen_toolbar.xml"
-    },
-    {
         "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/layout/abc_list_menu_item_checkbox.xml",
         "source": "/home/artem/.android/build-cache/e2b7e0ded733648b39ffef3c712776ce38f12045/output/res/layout/abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/layout/abc_screen_toolbar.xml",
+        "source": "/home/artem/.android/build-cache/e2b7e0ded733648b39ffef3c712776ce38f12045/output/res/layout/abc_screen_toolbar.xml"
     },
     {
         "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/layout/activity_thread_select.xml",
@@ -82,10 +82,6 @@
     {
         "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/layout/abc_expanded_menu_layout.xml",
         "source": "/home/artem/.android/build-cache/e2b7e0ded733648b39ffef3c712776ce38f12045/output/res/layout/abc_expanded_menu_layout.xml"
-    },
-    {
-        "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/layout/fragment_item.xml",
-        "source": "/home/artem/projects/ChWebmPlayer/app/src/main/res/layout/fragment_item.xml"
     },
     {
         "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/layout/list_divider.xml",
@@ -190,10 +186,6 @@
     {
         "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/layout/abc_action_menu_layout.xml",
         "source": "/home/artem/.android/build-cache/e2b7e0ded733648b39ffef3c712776ce38f12045/output/res/layout/abc_action_menu_layout.xml"
-    },
-    {
-        "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/layout/fragment_item_list.xml",
-        "source": "/home/artem/projects/ChWebmPlayer/app/src/main/res/layout/fragment_item_list.xml"
     },
     {
         "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/layout/abc_action_bar_title_item.xml",

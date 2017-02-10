@@ -31,6 +31,9 @@ public class MyPlaylistRecyclerViewAdapter extends RecyclerView.Adapter<MyPlayli
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
+        String text = mValues.get(position).getThreadTitle();
+        if(text!=null && text.contains("playable:")) holder.mView.setBackgroundColor(holder.mView.getResources().getColor(R.color.colorHighlighted));
+        else holder.mView.setBackgroundColor(holder.mView.getResources().getColor(R.color.colorEmpty));
         holder.mTextView.setText(mValues.get(position).getThreadTitle());
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override

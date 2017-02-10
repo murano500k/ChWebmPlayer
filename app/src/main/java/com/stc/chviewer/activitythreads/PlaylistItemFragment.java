@@ -15,8 +15,6 @@ import com.stc.chviewer.activitythreads.model.ThreadItemsPlaylist;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.R.attr.columnCount;
-
 /**
  * A fragment representing a list of Items.
  * <p/>
@@ -24,10 +22,8 @@ import static android.R.attr.columnCount;
  * interface.
  */
 public class PlaylistItemFragment extends Fragment {
-    private static final String ARG_COLUMN_COUNT = "column-count";
     private static final String ARG_THREADS = "column-count";
 
-    private int mColumnCount = 1;
 
     private List<ThreadItemsPlaylist> list;
     private OnListFragmentInteractionListener mListener;
@@ -39,7 +35,6 @@ public class PlaylistItemFragment extends Fragment {
     public static PlaylistItemFragment newInstance(ArrayList<ThreadItemsPlaylist> list) {
         PlaylistItemFragment fragment = new PlaylistItemFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_COLUMN_COUNT, columnCount);
         args.putParcelableArrayList(ARG_THREADS, list);
         fragment.setArguments(args);
         return fragment;
@@ -48,7 +43,6 @@ public class PlaylistItemFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
             list= getArguments().getParcelableArrayList(ARG_THREADS);
         }
 

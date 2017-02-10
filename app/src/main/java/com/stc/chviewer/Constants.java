@@ -22,6 +22,8 @@ public class Constants {
     public static final int COLUMNS_PORTRAIT = 3;
     public static final int COLUMNS_LANDSCAPE = 6;
 
+    public static final String SETTINGS = "com.stc.chviewer.SETTINGS";
+    public static final String SETTINGS_KEY_SHOW_HELP = "com.stc.chviewer.SETTINGS_KEY_SHOW_HELP";
 
 
 

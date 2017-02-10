@@ -22,6 +22,7 @@ public interface ThreadsContract {
 
     interface Presenter extends BasePresenter {
         void requestStartPlayer(String threadId, int itemIndex);
-        void requestThreadContent(String threadId);
+        void requestGetThreadContent(String threadId);
+        void requestSearchThreadContent(String query);
     }
 }

@@ -23,8 +23,8 @@ public class BoardSelectActivity_ViewBinding implements Unbinder {
   public BoardSelectActivity_ViewBinding(BoardSelectActivity target, View source) {
     this.target = target;
 
-    target.toolbar = Utils.findRequiredViewAsType(source, 2131624072, "field 'toolbar'", Toolbar.class);
     target.listView = Utils.findRequiredViewAsType(source, 2131624073, "field 'listView'", ListView.class);
+    target.toolbar = Utils.findRequiredViewAsType(source, 2131624072, "field 'toolbar'", Toolbar.class);
   }
 
   @Override
@@ -34,7 +34,7 @@ public class BoardSelectActivity_ViewBinding implements Unbinder {
     if (target == null) throw new IllegalStateException("Bindings already cleared.");
     this.target = null;
 
-    target.toolbar = null;
     target.listView = null;
+    target.toolbar = null;
   }
 }

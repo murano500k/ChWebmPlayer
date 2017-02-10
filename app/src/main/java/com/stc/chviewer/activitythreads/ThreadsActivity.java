@@ -4,9 +4,11 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Display;
+import android.view.Gravity;
 import android.view.Surface;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -38,6 +40,7 @@ public class ThreadsActivity extends AppCompatActivity implements ThreadsContrac
     private static final int REQUEST_PLAY = 244;
     private static final String PLAYABLE_FRAGMENT_TAG = "PLAYABLE_FRAGMENT_TAG";
     private static final String PLAYLIST_FRAGMENT_TAG = "PLAYLIST_FRAGMENT_TAG";
+    private static final int MAX_LENGTH = 1000;
 
     ProgressBar progressBar;
 
@@ -47,6 +50,7 @@ public class ThreadsActivity extends AppCompatActivity implements ThreadsContrac
     Toolbar toolbar;
 
     private ThreadsContract.Presenter presenter;
+    SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +83,52 @@ public class ThreadsActivity extends AppCompatActivity implements ThreadsContrac
         return getIntent().getStringExtra(BOARD_TITLE_EXTRA);
     }
 
+    private void showSearch() {
+        if(searchView==null) searchView=new SearchView(this);
+        searchView.setIconified(true);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                presenter.requestSearchThreadContent(query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return true;
+            }
+        });
+        Toolbar.LayoutParams layoutParams = new Toolbar.LayoutParams(Gravity.END);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if(searchView.isShown())toolbar.addView(searchView, layoutParams);
+
+            }
+        });
+    }
+
+    @Override
+    public void startPlayer(String board, ThreadItemsPlaylist threadItemsPlaylist, PlayableItem[] playableItems, int itemIndex) {
+        Intent intent=new Intent(this, PlayerActivity.class);
+
+        if(playableItems.length>MAX_LENGTH){
+            Log.w(TAG, "startPlayer: max length exceeded");
+            PlayableItem[] shorterList =new PlayableItem[MAX_LENGTH];
+            for (int i = 0; i < MAX_LENGTH; i++) {
+                shorterList[i]=playableItems[i];
+                intent.putExtra(ITEMS_LIST_EXTRA, shorterList);
+            }
+        }else {
+            intent.putExtra(ITEMS_LIST_EXTRA, playableItems);
+        }
+        intent.setAction(ACTION_PLAY_LIST);
+        intent.putExtra(THREAD_EXTRA,threadItemsPlaylist );
+        intent.putExtra(BOARD_TITLE_EXTRA, board);
+        intent.putExtra(ITEM_INDEX_EXTRA, itemIndex);
+        startActivityForResult(intent, REQUEST_PLAY);
+    }
+
     @Override
     public void showBaseInfo(List<ThreadItemsPlaylist> threads, boolean sawError) {
         if (sawError) {
@@ -87,27 +137,10 @@ public class ThreadsActivity extends AppCompatActivity implements ThreadsContrac
         }
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         PlaylistItemFragment playlistItemFragment = PlaylistItemFragment.newInstance((ArrayList<ThreadItemsPlaylist>) threads);
-        transaction.replace(R.id.container, playlistItemFragment, PLAYLIST_FRAGMENT_TAG);
+        transaction.replace(R.id.container, playlistItemFragment, PLAYLIST_FRAGMENT_TAG).addToBackStack(null);
         transaction.commit();
-
-
-    }
-
-    @Override
-    public void startPlayer(String board, ThreadItemsPlaylist threadItemsPlaylist, PlayableItem[] playableItems, int itemIndex) {
-        Intent intent=new Intent(this, PlayerActivity.class);
-        intent.setAction(ACTION_PLAY_LIST);
-        intent.putExtra(ITEMS_LIST_EXTRA, playableItems);
-        intent.putExtra(THREAD_EXTRA,threadItemsPlaylist );
-        intent.putExtra(BOARD_TITLE_EXTRA, board);
-        intent.putExtra(ITEM_INDEX_EXTRA, itemIndex);
-        startActivityForResult(intent, REQUEST_PLAY);
-    }
-
-    @Override
-    public void showError(String errorText) {
-        Log.e(TAG, "showError: "+errorText );
-        Toast.makeText(this, errorText, Toast.LENGTH_SHORT).show();
+        showSearch();
+        updateTitle(getBoard());
     }
 
     @Override
@@ -118,8 +151,40 @@ public class ThreadsActivity extends AppCompatActivity implements ThreadsContrac
                 playableItems,
                 0
         );
-        transaction.replace(R.id.container, playableItemFragment, PLAYABLE_FRAGMENT_TAG);
+        transaction.replace(R.id.container, playableItemFragment, PLAYABLE_FRAGMENT_TAG).addToBackStack(null);
         transaction.commit();
+        toolbar.removeView(searchView);
+        updateTitle(thread.getThreadTitle());
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Log.d(TAG, "onBackPressed: entrycount="+getFragmentManager().getBackStackEntryCount());
+        if(getFragmentManager().getBackStackEntryCount()<1 || getFragmentManager().findFragmentByTag(PLAYABLE_FRAGMENT_TAG)==null) {
+            updateTitle(getBoard());
+            showSearch();
+        }
+    }
+
+    private void updateTitle(String title){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                setTitle(title);
+            }
+        });
+    }
+
+    @Override
+    public void showError(String errorText) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Log.e(TAG, "showError: "+errorText );
+                Toast.makeText(ThreadsActivity.this, errorText, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -134,7 +199,7 @@ public class ThreadsActivity extends AppCompatActivity implements ThreadsContrac
 
     @Override
     public void onListFragmentInteraction(ThreadItemsPlaylist item) {
-        presenter.requestThreadContent(item.getThreadId());
+        presenter.requestGetThreadContent(item.getThreadId());
 
     }
     private boolean isPortrait() {

@@ -21,13 +21,13 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Parcelable;
+import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.exoplayer2.C;
@@ -49,7 +49,6 @@ import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.trackselection.MappingTrackSelector.MappedTrackInfo;
 import com.google.android.exoplayer2.trackselection.TrackSelection;
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
-import com.google.android.exoplayer2.ui.DebugTextViewHelper;
 import com.google.android.exoplayer2.ui.PlaybackControlView;
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.google.android.exoplayer2.upstream.DataSource;
@@ -62,8 +61,6 @@ import java.net.CookieHandler;
 import java.net.CookieManager;
 import java.net.CookiePolicy;
 
-import static android.view.KeyEvent.ACTION_DOWN;
-import static android.view.KeyEvent.KEYCODE_MEDIA_NEXT;
 import static com.stc.chviewer.Constants.ACTION_PLAY_LIST;
 import static com.stc.chviewer.Constants.BOARD_TITLE_EXTRA;
 import static com.stc.chviewer.Constants.ITEMS_LIST_EXTRA;
@@ -88,15 +85,11 @@ public class PlayerActivity extends Activity implements OnClickListener, ExoPlay
   private Timeline.Window window;
   private EventLogger eventLogger;
   private SimpleExoPlayerView simpleExoPlayerView;
-  private LinearLayout debugRootView;
-  private TextView debugTextView;
-  private Button retryButton;
 
   private DataSource.Factory mediaDataSourceFactory;
   private SimpleExoPlayer player;
   private DefaultTrackSelector trackSelector;
   private TrackSelectionHelper trackSelectionHelper;
-  private DebugTextViewHelper debugViewHelper;
   private boolean playerNeedsSource;
 
   private boolean shouldAutoPlay;
@@ -107,7 +100,7 @@ public class PlayerActivity extends Activity implements OnClickListener, ExoPlay
   PlayableItem[] playableItems;
   ThreadItemsPlaylist thread;
   String board;
-  int requestedItemIndex;
+  FloatingActionButton fab;
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -122,17 +115,30 @@ public class PlayerActivity extends Activity implements OnClickListener, ExoPlay
     setContentView(R.layout.player_activity);
     View rootView = findViewById(R.id.root);
     rootView.setOnClickListener(this);
-    debugRootView = (LinearLayout) findViewById(R.id.controls_root);
-    debugTextView = (TextView) findViewById(R.id.debug_text_view);
-    retryButton = (Button) findViewById(R.id.retry_button);
-	  debugTextView.setOnClickListener(this);
-    retryButton.setOnClickListener(this);
-
     simpleExoPlayerView = (SimpleExoPlayerView) findViewById(R.id.player_view);
     simpleExoPlayerView.setControllerVisibilityListener(this);
     simpleExoPlayerView.requestFocus();
-	  simpleExoPlayerView.setControllerShowTimeoutMs(1000);
+    simpleExoPlayerView.setControllerShowTimeoutMs(3000);
+    fab=(FloatingActionButton) findViewById(R.id.fab);
+    fab.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+      }
+    });
+    fab.setVisibility(View.GONE);
+    simpleExoPlayerView.setOnTouchListener(new OnSwipeTouchListener(PlayerActivity.this) {
+
+      public void onSwipeRight() {
+        simpleExoPlayerView.dispatchMediaKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN,KeyEvent.KEYCODE_MEDIA_PREVIOUS));
+      }
+      public void onSwipeLeft() {
+        simpleExoPlayerView.dispatchMediaKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN,KeyEvent.KEYCODE_MEDIA_NEXT));
+      }
+
+    });
+
   }
+
 
   @Override
   public void onNewIntent(Intent intent) {
@@ -192,31 +198,17 @@ public class PlayerActivity extends Activity implements OnClickListener, ExoPlay
     return super.dispatchKeyEvent(event) || simpleExoPlayerView.dispatchMediaKeyEvent(event);
   }
 
-  // OnClickListener methods
+
 
   @Override
   public void onClick(View view) {
-    if (view == retryButton) {
-      initPlayerFromIntent();
-    } else if (view == debugTextView) {
-	    Log.d(TAG, "onClick: next pressed");
-	    KeyEvent eventNext = new KeyEvent(ACTION_DOWN, KEYCODE_MEDIA_NEXT);
-	    simpleExoPlayerView.dispatchMediaKeyEvent(eventNext);
-    } else if (view.getParent() == debugRootView) {
-      MappedTrackInfo mappedTrackInfo = trackSelector.getCurrentMappedTrackInfo();
-      if (mappedTrackInfo != null) {
-        trackSelectionHelper.showSelectionDialog(this, ((Button) view).getText(),
-            trackSelector.getCurrentMappedTrackInfo(), (int) view.getTag());
-      }
-    }
+
   }
 
-  // PlaybackControlView.VisibilityListener implementation
 
   @Override
   public void onVisibilityChange(int visibility) {
 	  Log.d(TAG, "onVisibilityChange: "+visibility);
-	  debugRootView.setVisibility(visibility);
   }
 
   // Internal methods
@@ -224,17 +216,21 @@ public class PlayerActivity extends Activity implements OnClickListener, ExoPlay
     Intent intent = getIntent();
     String action = intent.getAction();
     if (ACTION_PLAY_LIST.equals(action)) {
-      playableItems = (PlayableItem[]) intent.getParcelableArrayExtra(ITEMS_LIST_EXTRA);
+
+      playableItems = toPlayableItems( intent.getParcelableArrayExtra(ITEMS_LIST_EXTRA));
       thread = intent.getParcelableExtra(THREAD_EXTRA);
       board = intent.getStringExtra(BOARD_TITLE_EXTRA);
       int index = intent.getIntExtra(ITEM_INDEX_EXTRA, 0);
       initializePlayer(playableItems,index, false);
-
-
     } else {
       showToast(getString(R.string.unexpected_intent_action, action));
       return;
     }
+  }
+  private PlayableItem[] toPlayableItems(Parcelable[] parcelables){
+    PlayableItem[] objects = new PlayableItem[parcelables.length];
+    System.arraycopy(parcelables, 0, objects, 0, parcelables.length);
+    return objects;
   }
 
   private void initializePlayer(PlayableItem[] items, int index,  boolean playerNeedsSource ) {
@@ -250,7 +246,6 @@ public class PlayerActivity extends Activity implements OnClickListener, ExoPlay
       player.setAudioDebugListener(eventLogger);
       player.setVideoDebugListener(eventLogger);
       player.setId3Output(eventLogger);
-
       simpleExoPlayerView.setPlayer(player);
       if (isTimelineStatic) {
         if (playerPosition == C.TIME_UNSET) {
@@ -260,19 +255,20 @@ public class PlayerActivity extends Activity implements OnClickListener, ExoPlay
         }
       }
       player.setPlayWhenReady(shouldAutoPlay);
-      debugViewHelper = new DebugTextViewHelper(player, debugTextView);
-      debugViewHelper.start();
       playerNeedsSource = true;
     }
     if (playerNeedsSource) {
-      mediaSources = new MediaSource[items.length];
-      for (int i = index; i < items.length; i++) {
-        mediaSources[i] = buildMediaSource(Uri.parse(items[i].getWebmUrl()));
+      int size = items.length-index;
+      mediaSources = new MediaSource[size];
+      for (int i = 0, j=index; i < size; i++ ) {
+        mediaSources[i] = buildMediaSource(Uri.parse(items[j].getWebmUrl()));
+        j++;
       }
       MediaSource mediaSource = mediaSources.length == 1 ? mediaSources[0]
           : new ConcatenatingMediaSource(mediaSources);
-
-      player.prepare(mediaSource, !isTimelineStatic, !isTimelineStatic);
+      Log.d(TAG, "initializePlayer: player="+ player);
+      Log.d(TAG, "initializePlayer: mediaSource="+ mediaSource);
+      player.prepare(mediaSource, true, true);
       updateButtonVisibilities();
     }
   }
@@ -283,8 +279,6 @@ public class PlayerActivity extends Activity implements OnClickListener, ExoPlay
   }
   private void releasePlayer() {
     if (player != null) {
-      debugViewHelper.stop();
-      debugViewHelper = null;
       shouldAutoPlay = player.getPlayWhenReady();
       playerWindow = player.getCurrentWindowIndex();
       playerPosition = C.TIME_UNSET;
@@ -306,7 +300,6 @@ public class PlayerActivity extends Activity implements OnClickListener, ExoPlay
 
   @Override
   public void onLoadingChanged(boolean isLoading) {
-    // Do nothing.
   }
 
   @Override
@@ -320,9 +313,6 @@ public class PlayerActivity extends Activity implements OnClickListener, ExoPlay
   @Override
   public void onPositionDiscontinuity() {
     Log.d(TAG, "onPositionDiscontinuity: ");
-    Toast.makeText(this, "onPositionDiscontinuity", Toast.LENGTH_SHORT).show();
-    setResult(RESULT_OK );
-    finish();
   }
 
 
@@ -332,6 +322,7 @@ public class PlayerActivity extends Activity implements OnClickListener, ExoPlay
   public void onTimelineChanged(Timeline timeline, Object manifest) {
     isTimelineStatic = !timeline.isEmpty()
         && !timeline.getWindow(timeline.getWindowCount() - 1, window).isDynamic;
+
   }
 
   @Override
@@ -387,9 +378,6 @@ public class PlayerActivity extends Activity implements OnClickListener, ExoPlay
   // User controls
 
   private void updateButtonVisibilities() {
-    debugRootView.removeAllViews();
-    retryButton.setVisibility(playerNeedsSource ? View.VISIBLE : View.GONE);
-    debugRootView.addView(retryButton);
 
     if (player == null) {
       return;
@@ -421,13 +409,11 @@ public class PlayerActivity extends Activity implements OnClickListener, ExoPlay
         button.setText(label);
         button.setTag(i);
         button.setOnClickListener(this);
-        debugRootView.addView(button, debugRootView.getChildCount() - 1);
       }
     }
   }
 
   private void showControls() {
-    debugRootView.setVisibility(View.VISIBLE);
   }
 
   private void showToast(int messageId) {

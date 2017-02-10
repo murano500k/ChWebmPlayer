@@ -1,19 +1,19 @@
 [
     {
-        "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/drawable/abc_text_cursor_material.xml",
-        "source": "/home/artem/.android/build-cache/e2b7e0ded733648b39ffef3c712776ce38f12045/output/res/drawable/abc_text_cursor_material.xml"
-    },
-    {
         "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/drawable/abc_btn_borderless_material.xml",
         "source": "/home/artem/.android/build-cache/e2b7e0ded733648b39ffef3c712776ce38f12045/output/res/drawable/abc_btn_borderless_material.xml"
     },
     {
-        "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/drawable/navigation_empty_icon.xml",
-        "source": "/home/artem/.android/build-cache/feb8f68a9bb20a99ea077e5745111fefc1059dae/output/res/drawable/navigation_empty_icon.xml"
+        "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/drawable/abc_text_cursor_material.xml",
+        "source": "/home/artem/.android/build-cache/e2b7e0ded733648b39ffef3c712776ce38f12045/output/res/drawable/abc_text_cursor_material.xml"
     },
     {
         "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/drawable/notification_bg_low.xml",
         "source": "/home/artem/.android/build-cache/e2b7e0ded733648b39ffef3c712776ce38f12045/output/res/drawable/notification_bg_low.xml"
+    },
+    {
+        "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/drawable/navigation_empty_icon.xml",
+        "source": "/home/artem/.android/build-cache/feb8f68a9bb20a99ea077e5745111fefc1059dae/output/res/drawable/navigation_empty_icon.xml"
     },
     {
         "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/drawable/abc_ic_ab_back_material.xml",

@@ -8,7 +8,6 @@ import com.stc.chviewer.retro.model.File;
 import com.stc.chviewer.retro.model.Post;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 import rx.Observer;
@@ -18,6 +17,7 @@ import rx.Observer;
  */
 
 public class ThreadsContentHelper {
+    private static final String TAG = "ThreadsContentHelper";
     private List<PlayableItem> items;
     private List<ThreadItemsPlaylist> threads;
     private String board;
@@ -26,7 +26,7 @@ public class ThreadsContentHelper {
     public ThreadsContentHelper(String board, Catalog catalog) {
         this.board = board;
         threads=new ArrayList<>();
-        items=new LinkedList<>();
+        items=new ArrayList<>();
         initThreads(catalog);
 
     }
@@ -84,14 +84,17 @@ public class ThreadsContentHelper {
     }
 
     public PlayableItem[] getThreadPlayableItems(String threadId){
+        if(!getThread(threadId).isLoaded()) return null;
+        if(items==null || items.size()==0)return  null;
         List<PlayableItem> threadItems=new ArrayList<>();
         for(PlayableItem item : items){
-            if(item.getThreadId().equals(threadId)) threadItems.add(item);
+            if(item!=null && threadId.equals(item.getThreadId())) threadItems.add(item);
         }
-        return (PlayableItem[]) threadItems.toArray();
+        return threadItems.toArray(new PlayableItem[threadItems.size()]);
     }
     public PlayableItem[] getAllPlayableItems(){
-        return (PlayableItem[]) items.toArray();
+        if(items==null)return  null;
+        return items.toArray(new PlayableItem[items.size()]);
     }
     public ThreadItemsPlaylist getThread(String threadId){
         for(ThreadItemsPlaylist threadItemsPlaylist : threads){

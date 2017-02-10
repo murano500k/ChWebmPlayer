@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="board_codes">
+        <item>b</item>
         <item>au</item>
         <item>bi</item>
         <item>biz</item>
@@ -51,7 +52,6 @@
         <item>ma</item>
         <item>vn</item>
         <item>d</item>
-        <item>b</item>
         <item>fag</item>
         <item>soc</item>
         <item>r</item>

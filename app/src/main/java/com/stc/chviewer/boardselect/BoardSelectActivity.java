@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
@@ -25,6 +26,8 @@ import butterknife.ButterKnife;
 import static com.stc.chviewer.Constants.ACTION_SHOW_THREADS;
 import static com.stc.chviewer.Constants.BOARD_TITLE_EXTRA;
 import static com.stc.chviewer.Constants.KEY_BOARD_NAME;
+import static com.stc.chviewer.Constants.SETTINGS;
+import static com.stc.chviewer.Constants.SETTINGS_KEY_SHOW_HELP;
 
 public class BoardSelectActivity extends AppCompatActivity {
     private static final String TAG = "BoardSelectActivity";
@@ -64,7 +67,8 @@ public class BoardSelectActivity extends AppCompatActivity {
                 return true;
             }
         });
-        toolbar.addView(searchView);
+        Toolbar.LayoutParams layoutParams = new Toolbar.LayoutParams(Gravity.END);
+        toolbar.addView(searchView, layoutParams);
         showBoardsList();
 
 
@@ -80,6 +84,7 @@ public class BoardSelectActivity extends AppCompatActivity {
         String fromArray[]={KEY_BOARD_NAME};
         int to[]={android.R.id.text1};
         ListAdapter adapter=new SimpleAdapter( this,data, android.R.layout.simple_list_item_1, fromArray, to);
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -95,6 +100,16 @@ public class BoardSelectActivity extends AppCompatActivity {
         intent.putExtra(BOARD_TITLE_EXTRA, boardName);
         startActivity(intent);
 
+    }
+
+    private void showHelpToastIfNeeded(){
+        if(shouldShowHelpToast()){
+            Toast.makeText(this, "Select item to start playback. All threads will be included in playlist automatically", Toast.LENGTH_SHORT).show();
+            getSharedPreferences(SETTINGS,MODE_PRIVATE ).edit().putBoolean(SETTINGS_KEY_SHOW_HELP, true).apply();
+        }
+    }
+    private boolean shouldShowHelpToast(){
+        return getSharedPreferences(SETTINGS,MODE_PRIVATE ).getBoolean(SETTINGS_KEY_SHOW_HELP, false);
     }
 
 

@@ -44,7 +44,8 @@ public class ThreadItemsPlaylist implements Parcelable {
     }
 
     public String getThreadTitle() {
-        return threadTitle+"\n playable: "+getItemsCount();
+        if(getItemsCount()>0) return threadTitle+"\n playable: "+getItemsCount();
+        else return threadTitle;
     }
     public boolean isLoaded(){
         return  isLoaded;
