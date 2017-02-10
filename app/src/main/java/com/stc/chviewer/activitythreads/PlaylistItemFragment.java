@@ -10,10 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.stc.chviewer.R;
-import com.stc.chviewer.activitythreads.model.PlayableItem;
 import com.stc.chviewer.activitythreads.model.ThreadItemsPlaylist;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static android.R.attr.columnCount;
 
 /**
  * A fragment representing a list of Items.
@@ -22,20 +24,33 @@ import java.util.List;
  * interface.
  */
 public class PlaylistItemFragment extends Fragment {
+    private static final String ARG_COLUMN_COUNT = "column-count";
+    private static final String ARG_THREADS = "column-count";
 
+    private int mColumnCount = 1;
 
-    private final List<ThreadItemsPlaylist> list;
+    private List<ThreadItemsPlaylist> list;
     private OnListFragmentInteractionListener mListener;
 
 
-    public PlaylistItemFragment(PlaylistItemFragment.OnListFragmentInteractionListener listFragmentInteractionListener , List<ThreadItemsPlaylist> list) {
-        this.list = list;
-        this.mListener = listFragmentInteractionListener;
+    public PlaylistItemFragment() {
     }
 
+    public static PlaylistItemFragment newInstance(ArrayList<ThreadItemsPlaylist> list) {
+        PlaylistItemFragment fragment = new PlaylistItemFragment();
+        Bundle args = new Bundle();
+        args.putInt(ARG_COLUMN_COUNT, columnCount);
+        args.putParcelableArrayList(ARG_THREADS, list);
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
+            list= getArguments().getParcelableArrayList(ARG_THREADS);
+        }
 
     }
 
@@ -43,8 +58,6 @@ public class PlaylistItemFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_threaditemsplaylist_list, container, false);
-
-        // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
             RecyclerView recyclerView = (RecyclerView) view;

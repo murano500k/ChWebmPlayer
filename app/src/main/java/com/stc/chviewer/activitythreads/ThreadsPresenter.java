@@ -2,7 +2,7 @@ package com.stc.chviewer.activitythreads;
 
 import android.util.Log;
 
-import com.stc.chviewer.activitythreads.model.ThreadItemsPlaylist;
+import com.stc.chviewer.activitythreads.model.PlayableItem;
 import com.stc.chviewer.activitythreads.model.ThreadsContentHelper;
 import com.stc.chviewer.retro.ChRetroHelper;
 import com.stc.chviewer.retro.model.Catalog;
@@ -12,10 +12,10 @@ import rx.Observer;
 import static android.content.ContentValues.TAG;
 
 public class ThreadsPresenter implements ThreadsContract.Presenter {
-    String board;
-    ThreadsContentHelper contentHelper;
-    ChRetroHelper retroHelper;
-    ThreadsContract.View view;
+    private String board;
+    private ThreadsContentHelper contentHelper;
+    private ChRetroHelper retroHelper;
+    private ThreadsContract.View view;
 
     public ThreadsPresenter(ThreadsContract.View view) {
         this.view=view;
@@ -30,7 +30,7 @@ public class ThreadsPresenter implements ThreadsContract.Presenter {
         retroHelper.getCatalog(board).subscribe(new Observer<Catalog>() {
             @Override
             public void onCompleted() {
-                view.showBaseInfo(contentHelper.getThreadsInfos(), contentHelper.getThreadsInfos()!=null);
+                view.showBaseInfo(contentHelper.getThreads(), contentHelper.getThreads()==null);
             }
 
             @Override
@@ -49,47 +49,22 @@ public class ThreadsPresenter implements ThreadsContract.Presenter {
 
     @Override
     public void requestStartPlayer(String threadId, int itemIndex) {
-        String threadText=null;
-        String[] uris=null;
-        for(ThreadItemsPlaylist pls : contentHelper.getThreadsInfos()){
-            if(pls.getThreadId().equals(threadId)) {
-                threadText=pls.getThreadTitle();
-                if(!pls.isLoaded()) {
-                    view.showError("thread "+threadText+"is not ready yet");
-                    return;
-                }
-                if(!pls.hasItems()){
-                    view.showError("thread "+threadText+" don't have playable items");
-                    return;
-                }
-                uris=contentHelper.getUris(threadId);
-                String[] extentions=new String[uris.length];
-                for (int i = 0; i <uris.length; i++) {
-                    extentions[i]="webm";
-                }
-                view.startPlayer(board, threadId, threadText, uris, extentions);
-            }
+        if(contentHelper.getDownloadStatus()>0){
+            view.startPlayer(board, contentHelper.getThread(threadId), contentHelper.getAllPlayableItems(), itemIndex);
+        }else {
+            view.showError("Items not added yet");
         }
-
     }
 
     @Override
     public void requestThreadContent(String threadId) {
-        String threadText=null;
-        String[] uris=null;
-        for(ThreadItemsPlaylist pls : contentHelper.getThreadsInfos()){
-            if(pls.getThreadId().equals(threadId)) {
-                threadText=pls.getThreadTitle();
-                if(!pls.isLoaded()) {
-                    view.showError("thread "+threadText+"is not ready yet");
-                    return;
-                }
-                if(!pls.hasItems()){
-                    view.showError("thread "+threadText+" don't have playable items");
-                    return;
-                }
-                view.loadThreadContent(pls , contentHelper.getPlaylistItems(threadId));
-            }
+        PlayableItem[] threadItems = contentHelper.getThreadPlayableItems(threadId);
+        if (threadItems == null) {
+            view.showError("Items not added yet");
+        } else if (threadItems.length == 0) {
+            view.showError("No playable items in this thread");
+        } else {
+            view.loadThreadContent(contentHelper.getThread(threadId), threadItems);
         }
     }
 }

@@ -8,7 +8,7 @@ import com.stc.chviewer.retro.model.File;
 import com.stc.chviewer.retro.model.Post;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 import rx.Observer;
@@ -18,7 +18,7 @@ import rx.Observer;
  */
 
 public class ThreadsContentHelper {
-    private HashMap<String , List<PlayableItem>> itemsMap;
+    private List<PlayableItem> items;
     private List<ThreadItemsPlaylist> threads;
     private String board;
     private int downloadStatus=0;
@@ -26,9 +26,13 @@ public class ThreadsContentHelper {
     public ThreadsContentHelper(String board, Catalog catalog) {
         this.board = board;
         threads=new ArrayList<>();
-        itemsMap=new HashMap<>();
+        items=new LinkedList<>();
         initThreads(catalog);
 
+    }
+
+    public int getDownloadStatus() {
+        return downloadStatus;
     }
 
     private void initThreads(Catalog catalog) {
@@ -36,24 +40,21 @@ public class ThreadsContentHelper {
             threads.add(new ThreadItemsPlaylist(thread.getNum(), thread.getSubject()+"\nposts: "+thread.getPostsCount()+ "\n"+thread.getDate()));
         }
     }
-    private boolean addItemsToThread(ChThreadContent threadContent){
+    private int addItemsToThread(ChThreadContent threadContent){
         int i=0;
-        List<PlayableItem> items=new ArrayList<>();
         for(Post post: threadContent.getThreads().get(0).getPosts()){
             if(post.getFiles()!=null && post.getFiles().size()!=0){
                 for(File file : post.getFiles()){
                     if(file.getType()==6){
-                        PlayableItem item = new PlayableItem(i,file);
-                        i++;
+                        PlayableItem item = new PlayableItem(items.size(),file);
                         items.add(item);
+                        i++;
+
                     }
                 }
             }
         }
-        if(items.size()>0 ) {
-            itemsMap.put(items.get(0).getThreadId(), items);
-            return true;
-        }else return false;
+        return i;
     }
 
     public void loadContent(ChRetroHelper retroHelper){
@@ -71,29 +72,32 @@ public class ThreadsContentHelper {
 
                 @Override
                 public void onNext(ChThreadContent chThreadContent) {
-                    pls.setHasItems(addItemsToThread(chThreadContent));
+                    pls.setItemsCount(addItemsToThread(chThreadContent));
                     pls.setLoaded(true);
                 }
             });
         }
     }
-    public List<ThreadItemsPlaylist> getThreadsInfos(){
+
+    public List<ThreadItemsPlaylist> getThreads(){
         return threads;
     }
-    public List<PlayableItem> getPlaylistItems(String threadId){
-        return itemsMap.get(threadId);
-    }
 
-    public String[] getUris(String threadId){
-        if(itemsMap!=null || itemsMap.get(threadId)!=null || itemsMap.get(threadId).isEmpty()) {
-            return null;
+    public PlayableItem[] getThreadPlayableItems(String threadId){
+        List<PlayableItem> threadItems=new ArrayList<>();
+        for(PlayableItem item : items){
+            if(item.getThreadId().equals(threadId)) threadItems.add(item);
         }
-        String[] uris = new String[itemsMap.get(threadId).size()];
-        int i = 0;
-        for(PlayableItem item : itemsMap.get(threadId)){
-            uris[item.getItemIndex()] = item.getWebmUrl();
+        return (PlayableItem[]) threadItems.toArray();
+    }
+    public PlayableItem[] getAllPlayableItems(){
+        return (PlayableItem[]) items.toArray();
+    }
+    public ThreadItemsPlaylist getThread(String threadId){
+        for(ThreadItemsPlaylist threadItemsPlaylist : threads){
+            if(threadId.equals(threadItemsPlaylist.getThreadId()))return threadItemsPlaylist;
         }
-        return uris;
+        return null;
     }
 
 

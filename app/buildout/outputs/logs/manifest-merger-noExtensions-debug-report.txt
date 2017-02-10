@@ -1,160 +1,160 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:16:1-96:12
+ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:2:1-68:12
 	package
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:17:5-31
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:4:5-31
 		INJECTED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml
 		INJECTED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml
 		INJECTED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:3:5-51
+	tools:ignore
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:5:5-43
 	xmlns:android
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:16:11-69
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:2:11-69
 	android:versionCode
 		INJECTED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml
 		INJECTED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml
 uses-permission#android.permission.INTERNET
-ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:19:5-67
+ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:6:5-67
 	android:name
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:19:22-64
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:6:22-64
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:20:5-80
+ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:7:5-80
 	android:name
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:20:22-77
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:7:22-77
 uses-feature#android.software.leanback
-ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:22:5-24:36
+ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:9:5-11:36
 	android:required
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:24:9-33
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:11:9-33
 	android:name
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:23:9-49
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:10:9-49
 uses-feature#android.hardware.touchscreen
-ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:25:5-27:36
+ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:12:5-14:36
 	android:required
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:27:9-33
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:14:9-33
 	android:name
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:26:9-52
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:13:9-52
 application
-ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:29:5-94:19
-MERGED from [com.android.support.test.espresso:espresso-contrib:2.2.2] /home/artem/.android/build-cache/c30fbcee82a20089ff547460d7820e0ff04509e9/output/AndroidManifest.xml:24:5-20
-MERGED from [com.android.support.test:runner:0.5] /home/artem/.android/build-cache/0d52c2f89823e65051068a62dbfd5fabb33646a7/output/AndroidManifest.xml:24:5-20
-MERGED from [com.android.support.test:exposed-instrumentation-api-publish:0.5] /home/artem/.android/build-cache/fc9055aa1fb48995b6e228087056c0348ad3937f/output/AndroidManifest.xml:24:5-20
-MERGED from [com.android.support.test.espresso:espresso-idling-resource:2.2.2] /home/artem/.android/build-cache/c2285545be17ef3651e7991628b39d1d5d95d919/output/AndroidManifest.xml:24:5-20
-MERGED from [com.android.support:design:25.1.1] /home/artem/.android/build-cache/75f07d396ea6b6c398876101a23c8e6b59f884dd/output/AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:appcompat-v7:25.1.1] /home/artem/.android/build-cache/776f517a295af1a8175aedad0a793e3e85a508d0/output/AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:animated-vector-drawable:25.1.1] /home/artem/.android/build-cache/fa0e7ed40991636ebcf2e71a4d61b3e164580729/output/AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-vector-drawable:25.1.1] /home/artem/.android/build-cache/f37eb2c2abd4a9e47b5085aa301e1ff9e117c1c2/output/AndroidManifest.xml:23:5-20
-MERGED from [com.android.support:transition:25.1.1] /home/artem/.android/build-cache/c3efd3aeb899fd30f80656f4204d8aa03a1adb54/output/AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:support-v4:25.1.1] /home/artem/.android/build-cache/8f08e7d51867fe20beb6689c9d4908c32921799d/output/AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-fragment:25.1.1] /home/artem/.android/build-cache/1a27f8217d5727fc7f8839a65b2bcdcbe5107000/output/AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-media-compat:25.1.1] /home/artem/.android/build-cache/89270ad4817e3c73567774d0dc860dda05c6a256/output/AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-core-utils:25.1.1] /home/artem/.android/build-cache/9e119d1eaafcdb9d6baf7dcd5aa3885dfb070823/output/AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-core-ui:25.1.1] /home/artem/.android/build-cache/8be6618e15a26c9e400c5fdae5cab4e2c671bd07/output/AndroidManifest.xml:25:5-20
-MERGED from [com.android.support:support-compat:25.1.1] /home/artem/.android/build-cache/3c2e19bb1ea82c2e875182248a8e2003f108c61b/output/AndroidManifest.xml:25:5-20
+ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:16:5-66:19
+MERGED from [com.android.support.test.espresso:espresso-contrib:2.2.2] /home/artem/.android/build-cache/6ee9b8436386b35c459b50a8e47d676226f0a9f3/output/AndroidManifest.xml:24:5-20
+MERGED from [com.android.support.test:runner:0.5] /home/artem/.android/build-cache/026aa94ea84849b5f0f0383c0a64ed564b6cbda0/output/AndroidManifest.xml:24:5-20
+MERGED from [com.android.support.test:exposed-instrumentation-api-publish:0.5] /home/artem/.android/build-cache/5a604d90c03a9226a73696fb056e03555fe59f7e/output/AndroidManifest.xml:24:5-20
+MERGED from [com.android.support.test.espresso:espresso-idling-resource:2.2.2] /home/artem/.android/build-cache/f6dc82fbd1235e374d3c61975f417b357f2e9ffc/output/AndroidManifest.xml:24:5-20
+MERGED from [com.android.support:design:25.1.1] /home/artem/.android/build-cache/feb8f68a9bb20a99ea077e5745111fefc1059dae/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:appcompat-v7:25.1.1] /home/artem/.android/build-cache/e2b7e0ded733648b39ffef3c712776ce38f12045/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.1.1] /home/artem/.android/build-cache/7f215d7bce34dda6001e79738a7d30e05d7d29cc/output/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:25.1.1] /home/artem/.android/build-cache/55afafb4040de026c4324196a542ca97837eb754/output/AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:transition:25.1.1] /home/artem/.android/build-cache/9ab409b2fd038967e843982410a5daeb439ddb60/output/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:25.1.1] /home/artem/.android/build-cache/9a108b6dedb102cd8d8b474f2c4b67316a477aca/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:25.1.1] /home/artem/.android/build-cache/619d87ea77f1634bf82eef15aeedc21dac5f663f/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:25.1.1] /home/artem/.android/build-cache/731d8b1299c488b1eaaa672b6cf7f40dfa3036ee/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:25.1.1] /home/artem/.android/build-cache/8f7acd2d3a90d3062d2d4ac455e9060f7fb2accd/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:25.1.1] /home/artem/.android/build-cache/5ba43b55639603b95af49ec75ac1c690eae67313/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:25.1.1] /home/artem/.android/build-cache/924020b7c3159f5d353ce3adbb06a6ddfc75e8df/output/AndroidManifest.xml:25:5-20
 	android:label
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:34:9-49
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:21:9-49
 	android:allowBackup
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:31:9-36
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:18:9-36
 	android:icon
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:33:9-45
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:20:9-45
 	android:largeHeap
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:35:9-33
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:22:9-33
 	android:banner
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:32:9-45
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:19:9-45
 	android:theme
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:36:9-40
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:23:9-40
 	android:name
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:30:9-40
-activity#com.stc.chviewer.PlayerActivity
-ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:58:9-80:20
-	android:label
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:61:13-53
-	android:launchMode
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:62:13-43
-	android:configChanges
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:60:13-122
-	android:theme
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:63:13-69
-	android:name
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:59:13-43
-intent-filter#android.intent.category.DEFAULT+com.google.android.exoplayer.demo.action.VIEW
-ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:64:13-74:29
-action#com.google.android.exoplayer.demo.action.VIEW
-ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:65:17-88
-	android:name
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:65:25-85
-category#android.intent.category.DEFAULT
-ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:67:17-76
-	android:name
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:67:27-73
-data
-ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:69:17-47
-	android:scheme
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:69:23-44
-intent-filter#android.intent.category.DEFAULT+com.google.android.exoplayer.demo.action.VIEW_LIST
-ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:75:13-79:29
-action#com.google.android.exoplayer.demo.action.VIEW_LIST
-ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:76:17-93
-	android:name
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:76:25-90
-activity#com.stc.chviewer.boardselect.BoardSelectActivity
-ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:81:9-87:20
-	android:name
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:81:19-66
-intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:82:13-86:29
-action#android.intent.action.MAIN
-ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:83:17-69
-	android:name
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:83:25-66
-category#android.intent.category.LAUNCHER
-ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:85:17-77
-	android:name
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:85:27-74
-activity#com.stc.chviewer.threadselect.ThreadSelectActivity
-ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:88:9-92:20
-	android:name
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:88:19-68
-intent-filter#ACTION_SHOW_THREADS
-ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:89:13-91:29
-action#ACTION_SHOW_THREADS
-ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:90:17-62
-	android:name
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:90:25-59
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:17:9-40
 activity#com.stc.chviewer.activitythreads.ThreadsActivity
-ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:93:9-78
+ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:26:9-31:20
 	android:name
-		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:93:19-66
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:26:19-66
+intent-filter#ACTION_SHOW_THREADS
+ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:28:13-30:29
+action#ACTION_SHOW_THREADS
+ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:29:17-62
+	android:name
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:29:25-59
+activity#com.stc.chviewer.boardselect.BoardSelectActivity
+ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:35:9-40:20
+	android:name
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:35:19-66
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:36:13-39:29
+action#android.intent.action.MAIN
+ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:37:17-69
+	android:name
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:37:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:38:17-77
+	android:name
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:38:27-74
+activity#com.stc.chviewer.PlayerActivity
+ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:42:9-64:20
+	android:label
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:45:13-53
+	android:launchMode
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:46:13-43
+	android:configChanges
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:44:13-122
+	android:theme
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:47:13-69
+	android:name
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:43:13-43
+intent-filter#android.intent.category.DEFAULT+com.google.android.exoplayer.demo.action.VIEW
+ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:48:13-58:29
+action#com.google.android.exoplayer.demo.action.VIEW
+ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:49:17-88
+	android:name
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:49:25-85
+category#android.intent.category.DEFAULT
+ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:51:17-76
+	android:name
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:51:27-73
+data
+ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:53:17-47
+	android:scheme
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:53:23-44
+intent-filter#android.intent.category.DEFAULT+com.google.android.exoplayer.demo.action.VIEW_LIST
+ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:59:13-63:29
+action#com.google.android.exoplayer.demo.action.VIEW_LIST
+ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:60:17-93
+	android:name
+		ADDED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml:60:25-90
 uses-sdk
 INJECTED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.jakewharton:butterknife:8.5.1] /home/artem/.android/build-cache/94c68e7fa008b2ac61392d934b354e33dafc394d/output/AndroidManifest.xml:5:5-43
 MERGED from [com.google.android.exoplayer:exoplayer:r2.1.1] /home/artem/.android/build-cache/af3be36d2e144496f4ef51f9eff325327da1cbe5/output/AndroidManifest.xml:21:5-23:41
-MERGED from [com.android.support.test.espresso:espresso-contrib:2.2.2] /home/artem/.android/build-cache/c30fbcee82a20089ff547460d7820e0ff04509e9/output/AndroidManifest.xml:20:5-22:41
-MERGED from [com.android.support.test.espresso:espresso-core:2.2.2] /home/artem/.android/build-cache/3d6c6c775b57935be2f645132e226aba2522a526/output/AndroidManifest.xml:20:5-22:41
-MERGED from [com.android.support.test:rules:0.5] /home/artem/.android/build-cache/75f2ef3356600314e911d89f7250534493e591b7/output/AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.support.test:runner:0.5] /home/artem/.android/build-cache/0d52c2f89823e65051068a62dbfd5fabb33646a7/output/AndroidManifest.xml:20:5-22:41
-MERGED from [com.android.support.test:exposed-instrumentation-api-publish:0.5] /home/artem/.android/build-cache/fc9055aa1fb48995b6e228087056c0348ad3937f/output/AndroidManifest.xml:20:5-22:41
-MERGED from [com.android.support.test.espresso:espresso-idling-resource:2.2.2] /home/artem/.android/build-cache/c2285545be17ef3651e7991628b39d1d5d95d919/output/AndroidManifest.xml:20:5-22:41
+MERGED from [com.android.support.test.espresso:espresso-contrib:2.2.2] /home/artem/.android/build-cache/6ee9b8436386b35c459b50a8e47d676226f0a9f3/output/AndroidManifest.xml:20:5-22:41
+MERGED from [com.android.support.test.espresso:espresso-core:2.2.2] /home/artem/.android/build-cache/cfde0193e63cebaddf280cf4fa6dbcedf0035d99/output/AndroidManifest.xml:20:5-22:41
+MERGED from [com.android.support.test:rules:0.5] /home/artem/.android/build-cache/b81136ce6ab295486d209bc4badf137f266b1875/output/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.test:runner:0.5] /home/artem/.android/build-cache/026aa94ea84849b5f0f0383c0a64ed564b6cbda0/output/AndroidManifest.xml:20:5-22:41
+MERGED from [com.android.support.test:exposed-instrumentation-api-publish:0.5] /home/artem/.android/build-cache/5a604d90c03a9226a73696fb056e03555fe59f7e/output/AndroidManifest.xml:20:5-22:41
+MERGED from [com.android.support.test.espresso:espresso-idling-resource:2.2.2] /home/artem/.android/build-cache/f6dc82fbd1235e374d3c61975f417b357f2e9ffc/output/AndroidManifest.xml:20:5-22:41
 MERGED from [io.reactivex.rxjava2:rxandroid:2.0.1] /home/artem/.android/build-cache/a333cac38412101f721fdd2549f189510d292687/output/AndroidManifest.xml:19:5-43
 MERGED from [com.jakewharton.rxbinding:rxbinding-support-v4:1.0.0] /home/artem/.android/build-cache/defaff7ebc40c01fb0b5b94be2443c89233d7ed2/output/AndroidManifest.xml:6:5-44
 MERGED from [com.jakewharton.rxbinding:rxbinding-appcompat-v7:1.0.0] /home/artem/.android/build-cache/631e13499dcc680c431c6def22cadcfea8a1109d/output/AndroidManifest.xml:6:5-44
 MERGED from [com.jakewharton.rxbinding:rxbinding-design:1.0.0] /home/artem/.android/build-cache/eee5021de4d572511d926f590dbeb145d2eeda92/output/AndroidManifest.xml:6:5-44
-MERGED from [com.android.support:design:25.1.1] /home/artem/.android/build-cache/75f07d396ea6b6c398876101a23c8e6b59f884dd/output/AndroidManifest.xml:21:5-23:62
-MERGED from [com.android.support:appcompat-v7:25.1.1] /home/artem/.android/build-cache/776f517a295af1a8175aedad0a793e3e85a508d0/output/AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:animated-vector-drawable:25.1.1] /home/artem/.android/build-cache/fa0e7ed40991636ebcf2e71a4d61b3e164580729/output/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:25.1.1] /home/artem/.android/build-cache/f37eb2c2abd4a9e47b5085aa301e1ff9e117c1c2/output/AndroidManifest.xml:21:5-43
-MERGED from [com.android.support:transition:25.1.1] /home/artem/.android/build-cache/c3efd3aeb899fd30f80656f4204d8aa03a1adb54/output/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:25.1.1] /home/artem/.android/build-cache/8f08e7d51867fe20beb6689c9d4908c32921799d/output/AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-fragment:25.1.1] /home/artem/.android/build-cache/1a27f8217d5727fc7f8839a65b2bcdcbe5107000/output/AndroidManifest.xml:21:5-23:60
-MERGED from [com.android.support:support-media-compat:25.1.1] /home/artem/.android/build-cache/89270ad4817e3c73567774d0dc860dda05c6a256/output/AndroidManifest.xml:21:5-23:63
-MERGED from [com.android.support:support-core-utils:25.1.1] /home/artem/.android/build-cache/9e119d1eaafcdb9d6baf7dcd5aa3885dfb070823/output/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:design:25.1.1] /home/artem/.android/build-cache/feb8f68a9bb20a99ea077e5745111fefc1059dae/output/AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:appcompat-v7:25.1.1] /home/artem/.android/build-cache/e2b7e0ded733648b39ffef3c712776ce38f12045/output/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:25.1.1] /home/artem/.android/build-cache/7f215d7bce34dda6001e79738a7d30e05d7d29cc/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.1.1] /home/artem/.android/build-cache/55afafb4040de026c4324196a542ca97837eb754/output/AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:transition:25.1.1] /home/artem/.android/build-cache/9ab409b2fd038967e843982410a5daeb439ddb60/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:25.1.1] /home/artem/.android/build-cache/9a108b6dedb102cd8d8b474f2c4b67316a477aca/output/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.1.1] /home/artem/.android/build-cache/619d87ea77f1634bf82eef15aeedc21dac5f663f/output/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.1.1] /home/artem/.android/build-cache/731d8b1299c488b1eaaa672b6cf7f40dfa3036ee/output/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-utils:25.1.1] /home/artem/.android/build-cache/8f7acd2d3a90d3062d2d4ac455e9060f7fb2accd/output/AndroidManifest.xml:21:5-23:61
 MERGED from [com.jakewharton.rxbinding:rxbinding-recyclerview-v7:1.0.0] /home/artem/.android/build-cache/423f28583dacd9ffef6101dfc4bef2eea3fd5d9c/output/AndroidManifest.xml:6:5-44
 MERGED from [com.jakewharton.rxbinding:rxbinding:1.0.0] /home/artem/.android/build-cache/737434693b21d2311051820043f8036673b9869d/output/AndroidManifest.xml:6:5-44
 MERGED from [io.reactivex:rxandroid:1.2.1] /home/artem/.android/build-cache/543824ffbdebbb73149288330b78a28bdaf196e7/output/AndroidManifest.xml:19:5-43
-MERGED from [com.android.support:recyclerview-v7:25.1.1] /home/artem/.android/build-cache/4ee4a45691ec43f7416fb6e1b1be0a5483749ede/output/AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:support-core-ui:25.1.1] /home/artem/.android/build-cache/8be6618e15a26c9e400c5fdae5cab4e2c671bd07/output/AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support:support-compat:25.1.1] /home/artem/.android/build-cache/3c2e19bb1ea82c2e875182248a8e2003f108c61b/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:recyclerview-v7:25.1.1] /home/artem/.android/build-cache/2032753e820133f75a0b52868c4325b21b1cee79/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-core-ui:25.1.1] /home/artem/.android/build-cache/5ba43b55639603b95af49ec75ac1c690eae67313/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:25.1.1] /home/artem/.android/build-cache/924020b7c3159f5d353ce3adbb06a6ddfc75e8df/output/AndroidManifest.xml:21:5-23:58
 	tools:overrideLibrary
-		ADDED from [com.android.support:design:25.1.1] /home/artem/.android/build-cache/75f07d396ea6b6c398876101a23c8e6b59f884dd/output/AndroidManifest.xml:23:9-59
+		ADDED from [com.android.support:design:25.1.1] /home/artem/.android/build-cache/feb8f68a9bb20a99ea077e5745111fefc1059dae/output/AndroidManifest.xml:23:9-59
 	android:targetSdkVersion
 		INJECTED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml
 		INJECTED from /home/artem/projects/ChWebmPlayer/app/src/main/AndroidManifest.xml

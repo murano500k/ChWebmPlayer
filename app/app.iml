@@ -122,14 +122,19 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/jni" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/rs" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/shaders" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/buildout/intermediates/assets" />
       <excludeFolder url="file://$MODULE_DIR$/buildout/intermediates/blame" />
       <excludeFolder url="file://$MODULE_DIR$/buildout/intermediates/classes" />
       <excludeFolder url="file://$MODULE_DIR$/buildout/intermediates/incremental" />
       <excludeFolder url="file://$MODULE_DIR$/buildout/intermediates/incremental-safeguard" />
+      <excludeFolder url="file://$MODULE_DIR$/buildout/intermediates/jniLibs" />
       <excludeFolder url="file://$MODULE_DIR$/buildout/intermediates/manifests" />
+      <excludeFolder url="file://$MODULE_DIR$/buildout/intermediates/packaged" />
       <excludeFolder url="file://$MODULE_DIR$/buildout/intermediates/res" />
       <excludeFolder url="file://$MODULE_DIR$/buildout/intermediates/rs" />
+      <excludeFolder url="file://$MODULE_DIR$/buildout/intermediates/shaders" />
       <excludeFolder url="file://$MODULE_DIR$/buildout/intermediates/symbols" />
+      <excludeFolder url="file://$MODULE_DIR$/buildout/intermediates/transforms" />
       <excludeFolder url="file://$MODULE_DIR$/buildout/outputs" />
       <excludeFolder url="file://$MODULE_DIR$/buildout/tmp" />
     </content>

@@ -1,42 +1,77 @@
 package com.stc.chviewer.activitythreads.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by artem on 2/9/17.
  */
 
-public class ThreadItemsPlaylist {
+public class ThreadItemsPlaylist implements Parcelable {
     private String threadId;
     private String threadTitle;
-    private boolean hasItems;
+    private int itemsCount;
     private boolean isLoaded;
 
     public ThreadItemsPlaylist(String threadId, String threadTitle) {
         this.threadId = threadId;
         this.threadTitle = threadTitle;
-        hasItems=false;
+        itemsCount=0;
         isLoaded=false;
     }
+
+    protected ThreadItemsPlaylist(Parcel in) {
+        threadId = in.readString();
+        threadTitle = in.readString();
+        itemsCount = in.readInt();
+        isLoaded = in.readByte() != 0;
+    }
+
+    public static final Creator<ThreadItemsPlaylist> CREATOR = new Creator<ThreadItemsPlaylist>() {
+        @Override
+        public ThreadItemsPlaylist createFromParcel(Parcel in) {
+            return new ThreadItemsPlaylist(in);
+        }
+
+        @Override
+        public ThreadItemsPlaylist[] newArray(int size) {
+            return new ThreadItemsPlaylist[size];
+        }
+    };
 
     public String getThreadId() {
         return threadId;
     }
 
     public String getThreadTitle() {
-        return threadTitle;
+        return threadTitle+"\n playable: "+getItemsCount();
     }
     public boolean isLoaded(){
         return  isLoaded;
     }
-    public boolean hasItems(){
-        return  hasItems;
+    public int getItemsCount(){
+        return  itemsCount;
     }
 
     public void setLoaded(boolean b){
         isLoaded=b;
     }
-public void setHasItems(boolean b){
-    hasItems=b;
+    public void setItemsCount(int v){
+        itemsCount=v;
     }
 
 
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(threadId);
+        dest.writeString(threadTitle);
+        dest.writeInt(itemsCount);
+        dest.writeByte((byte) (isLoaded ? 1 : 0));
+    }
 }

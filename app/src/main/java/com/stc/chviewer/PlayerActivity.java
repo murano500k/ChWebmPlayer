@@ -55,6 +55,8 @@ import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.util.Util;
+import com.stc.chviewer.activitythreads.model.PlayableItem;
+import com.stc.chviewer.activitythreads.model.ThreadItemsPlaylist;
 
 import java.net.CookieHandler;
 import java.net.CookieManager;
@@ -62,29 +64,17 @@ import java.net.CookiePolicy;
 
 import static android.view.KeyEvent.ACTION_DOWN;
 import static android.view.KeyEvent.KEYCODE_MEDIA_NEXT;
-import static com.stc.chviewer.Constants.EXTRA_BOARD_NAME;
-import static com.stc.chviewer.Constants.EXTRA_THREAD_ID;
+import static com.stc.chviewer.Constants.ACTION_PLAY_LIST;
+import static com.stc.chviewer.Constants.BOARD_TITLE_EXTRA;
+import static com.stc.chviewer.Constants.ITEMS_LIST_EXTRA;
+import static com.stc.chviewer.Constants.ITEM_INDEX_EXTRA;
+import static com.stc.chviewer.Constants.THREAD_EXTRA;
 
 public class PlayerActivity extends Activity implements OnClickListener, ExoPlayer.EventListener,
     PlaybackControlView.VisibilityListener {
 
   public static final String TAG = "PlayerActivity";
 
-  public static final String DRM_SCHEME_UUID_EXTRA = "drm_scheme_uuid";
-  public static final String DRM_LICENSE_URL = "drm_license_url";
-  public static final String DRM_KEY_REQUEST_PROPERTIES = "drm_key_request_properties";
-  public static final String PREFER_EXTENSION_DECODERS = "prefer_extension_decoders";
-
-  public static final String ACTION_VIEW = "com.google.android.exoplayer.demo.action.VIEW";
-  public static final String EXTENSION_EXTRA = "extension";
-
-  public static final String ACTION_VIEW_LIST =
-      "com.google.android.exoplayer.demo.action.VIEW_LIST";
-  public static final String URI_LIST_EXTRA = "uri_list";
-  public static final String TITLE_EXTRA = "TITLE_EXTRA";
-  public static final String BOARD_EXTRA = "BOARD_EXTRA";
-  public static final String THREADID_EXTRA = "THREADID_EXTRA";
-  public static final String EXTENSION_LIST_EXTRA = "extension_list";
 
 
   private static final DefaultBandwidthMeter BANDWIDTH_METER = new DefaultBandwidthMeter();
@@ -114,11 +104,10 @@ public class PlayerActivity extends Activity implements OnClickListener, ExoPlay
   private int playerWindow;
   private long playerPosition;
 	MediaSource[] mediaSources;
-  String title;
+  PlayableItem[] playableItems;
+  ThreadItemsPlaylist thread;
   String board;
-  String threadId;
-  // Activity lifecycle
-
+  int requestedItemIndex;
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -234,30 +223,21 @@ public class PlayerActivity extends Activity implements OnClickListener, ExoPlay
   private void initPlayerFromIntent() {
     Intent intent = getIntent();
     String action = intent.getAction();
-    Uri[] uris;
-    String[] extensions;
-    if (ACTION_VIEW.equals(action)) {
-      uris = new Uri[]{intent.getData()};
-      extensions = new String[]{intent.getStringExtra(EXTENSION_EXTRA)};
-    } else if (ACTION_VIEW_LIST.equals(action)) {
-      String[] uriStrings = intent.getStringArrayExtra(URI_LIST_EXTRA);
+    if (ACTION_PLAY_LIST.equals(action)) {
+      playableItems = (PlayableItem[]) intent.getParcelableArrayExtra(ITEMS_LIST_EXTRA);
+      thread = intent.getParcelableExtra(THREAD_EXTRA);
+      board = intent.getStringExtra(BOARD_TITLE_EXTRA);
+      int index = intent.getIntExtra(ITEM_INDEX_EXTRA, 0);
+      initializePlayer(playableItems,index, false);
 
-      uris = new Uri[uriStrings.length];
-      for (int i = 0; i < uriStrings.length; i++) {
-        uris[i] = Uri.parse(uriStrings[i]);
-      }
-      extensions = intent.getStringArrayExtra(EXTENSION_LIST_EXTRA);
-      if (extensions == null) {
-        extensions = new String[uriStrings.length];
-      }
+
     } else {
       showToast(getString(R.string.unexpected_intent_action, action));
       return;
     }
-    initializePlayer(uris, extensions, false);
   }
 
-  private void initializePlayer(Uri[] uris ,String[] extensions, boolean playerNeedsSource ) {
+  private void initializePlayer(PlayableItem[] items, int index,  boolean playerNeedsSource ) {
     if (player == null) {
       TrackSelection.Factory videoTrackSelectionFactory =
           new AdaptiveVideoTrackSelection.Factory(BANDWIDTH_METER);
@@ -285,26 +265,21 @@ public class PlayerActivity extends Activity implements OnClickListener, ExoPlay
       playerNeedsSource = true;
     }
     if (playerNeedsSource) {
-      mediaSources = new MediaSource[uris.length];
-      for (int i = 0; i < uris.length; i++) {
-        mediaSources[i] = buildMediaSource(uris[i], extensions[i]);
+      mediaSources = new MediaSource[items.length];
+      for (int i = index; i < items.length; i++) {
+        mediaSources[i] = buildMediaSource(Uri.parse(items[i].getWebmUrl()));
       }
       MediaSource mediaSource = mediaSources.length == 1 ? mediaSources[0]
           : new ConcatenatingMediaSource(mediaSources);
+
       player.prepare(mediaSource, !isTimelineStatic, !isTimelineStatic);
       updateButtonVisibilities();
     }
   }
 
-  private MediaSource buildMediaSource(Uri uri, String overrideExtension) {
-    //int type = C.TYPE_OTHER;
-    int type = C.TYPE_DASH;
+  private MediaSource buildMediaSource(Uri uri) {
     return new ExtractorMediaSource(uri, mediaDataSourceFactory, new DefaultExtractorsFactory(),
             mainHandler, eventLogger);
-
-    //return new DashMediaSource(uri, buildDataSourceFactory(false),
-     //       new DefaultDashChunkSource.Factory(mediaDataSourceFactory), mainHandler, eventLogger);
-
   }
   private void releasePlayer() {
     if (player != null) {
@@ -350,15 +325,6 @@ public class PlayerActivity extends Activity implements OnClickListener, ExoPlay
     finish();
   }
 
-  public void setNewIntent(String boardName, String threadId, String[] uris, String[] extentions) {
-    Intent intent=new Intent(this, PlayerActivity.class);
-    intent.setAction(ACTION_VIEW_LIST);
-    intent.putExtra(URI_LIST_EXTRA, uris);
-    intent.putExtra(EXTENSION_LIST_EXTRA,extentions );
-    intent.putExtra(EXTRA_BOARD_NAME, boardName);
-    intent.putExtra(EXTRA_THREAD_ID, threadId);
-    setIntent(intent);
-  }
 
 
 

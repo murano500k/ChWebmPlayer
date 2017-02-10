@@ -1,8 +1,9 @@
 package com.stc.chviewer.activitythreads;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,29 +11,36 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.stc.chviewer.R;
-import com.stc.chviewer.activitythreads.model.PlayableItem;
+import com.stc.chviewer.activitythreads.dummy.DummyContent;
+import com.stc.chviewer.activitythreads.dummy.DummyContent.DummyItem;
 
+/**
+ * A fragment representing a list of Items.
+ * <p/>
+ * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
+ * interface.
+ */
+public class ItemFragment extends Fragment {
 
-public class PlayableItemFragment extends Fragment {
+    // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
-    private static final String ARG_PLAYABLE_ITEMS = "ARG_PLAYABLE_ITEMS";
-    private static final String ARG_SELECTED_INDEX = "ARG_SELECTED_INDEX";
-    private static final String ARG_THREAD_ID = "ARG_THREAD_ID";
+    // TODO: Customize parameters
     private int mColumnCount = 1;
-    private String threadId=null;
-    PlayableItem[] list;
     private OnListFragmentInteractionListener mListener;
-    public PlayableItemFragment() {
+
+    /**
+     * Mandatory empty constructor for the fragment manager to instantiate the
+     * fragment (e.g. upon screen orientation changes).
+     */
+    public ItemFragment() {
     }
 
-    public static PlayableItemFragment newInstance(int columnCount, PlayableItem[] playableItems, int selectedItem) {
-        PlayableItemFragment fragment = new PlayableItemFragment();
+    // TODO: Customize parameter initialization
+    @SuppressWarnings("unused")
+    public static ItemFragment newInstance(int columnCount) {
+        ItemFragment fragment = new ItemFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
-        args.putParcelableArray(ARG_PLAYABLE_ITEMS, playableItems);
-        args.putInt(ARG_SELECTED_INDEX, selectedItem);
-        if(playableItems.length>0)
-            args.putString(ARG_THREAD_ID, playableItems[0].getThreadId());
         fragment.setArguments(args);
         return fragment;
     }
@@ -40,26 +48,27 @@ public class PlayableItemFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
-            threadId=getArguments().getString(ARG_THREAD_ID);
-            list= (PlayableItem[]) getArguments().getParcelableArray(ARG_PLAYABLE_ITEMS);
         }
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_playableitem_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_item_list, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
             Context context = view.getContext();
             RecyclerView recyclerView = (RecyclerView) view;
-            recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            recyclerView.setAdapter(new MyPlayableItemRecyclerViewAdapter(list, mListener));
+            if (mColumnCount <= 1) {
+                recyclerView.setLayoutManager(new LinearLayoutManager(context));
+            } else {
+                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
+            }
+            recyclerView.setAdapter(new MyItemRecyclerViewAdapter(DummyContent.ITEMS, mListener));
         }
         return view;
     }
@@ -82,9 +91,18 @@ public class PlayableItemFragment extends Fragment {
         mListener = null;
     }
 
+    /**
+     * This interface must be implemented by activities that contain this
+     * fragment to allow an interaction in this fragment to be communicated
+     * to the activity and potentially other fragments contained in that
+     * activity.
+     * <p/>
+     * See the Android Training lesson <a href=
+     * "http://developer.android.com/training/basics/fragments/communicating.html"
+     * >Communicating with Other Fragments</a> for more information.
+     */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(PlayableItem item);
+        void onListFragmentInteraction(DummyItem item);
     }
-
 }

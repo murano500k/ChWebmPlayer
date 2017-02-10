@@ -41,7 +41,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static android.view.View.GONE;
-import static com.stc.chviewer.Constants.EXTRA_BOARD_NAME;
+import static com.stc.chviewer.Constants.BOARD_TITLE_EXTRA;
 import static com.stc.chviewer.Constants.EXTRA_THREAD_ID;
 import static com.stc.chviewer.PlayerActivity.ACTION_VIEW_LIST;
 import static com.stc.chviewer.PlayerActivity.EXTENSION_LIST_EXTRA;
@@ -162,7 +162,7 @@ public class ThreadSelectActivity extends AppCompatActivity implements ThreadSel
 		intent.setAction(ACTION_VIEW_LIST);
 		intent.putExtra(URI_LIST_EXTRA, uris);
 		intent.putExtra(EXTENSION_LIST_EXTRA,extentions );
-		intent.putExtra(EXTRA_BOARD_NAME, boardName);
+		intent.putExtra(BOARD_TITLE_EXTRA, boardName);
 		intent.putExtra(EXTRA_THREAD_ID, threadTitle);
 		startActivityForResult(intent, REQUEST_PLAY);
 	}
@@ -172,7 +172,7 @@ public class ThreadSelectActivity extends AppCompatActivity implements ThreadSel
 	public String getBoard() {
 		Intent intent=getIntent();
 		if(intent==null)return null;
-		return intent.getStringExtra(EXTRA_BOARD_NAME);
+		return intent.getStringExtra(BOARD_TITLE_EXTRA);
 	}
 
 

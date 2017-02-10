@@ -15,16 +15,13 @@ public interface ThreadsContract {
     interface View extends BaseView<ThreadsContract.Presenter> {
         String getBoard();
         void showBaseInfo(List<ThreadItemsPlaylist> threads, boolean sawError);
-        void startPlayer(String board, String threadId, String threadText, String [] uris,String[] extentions);
+        void startPlayer(String board, ThreadItemsPlaylist threadItemsPlaylist, PlayableItem[] playableItems, int itemIndex );
         void showError(String errorText);
-        void loadThreadContent(ThreadItemsPlaylist thread, List <PlayableItem> items);
+        void loadThreadContent(ThreadItemsPlaylist thread, PlayableItem[] playableItems);
     }
 
     interface Presenter extends BasePresenter {
         void requestStartPlayer(String threadId, int itemIndex);
         void requestThreadContent(String threadId);
-
-
-
     }
 }

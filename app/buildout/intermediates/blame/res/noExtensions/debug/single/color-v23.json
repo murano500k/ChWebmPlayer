@@ -1,46 +1,46 @@
 [
     {
         "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/color-v23/abc_tint_spinner.xml",
-        "source": "/home/artem/.android/build-cache/776f517a295af1a8175aedad0a793e3e85a508d0/output/res/color-v23/abc_tint_spinner.xml"
+        "source": "/home/artem/.android/build-cache/e2b7e0ded733648b39ffef3c712776ce38f12045/output/res/color-v23/abc_tint_spinner.xml"
     },
     {
         "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/color-v23/abc_tint_btn_checkable.xml",
-        "source": "/home/artem/.android/build-cache/776f517a295af1a8175aedad0a793e3e85a508d0/output/res/color-v23/abc_tint_btn_checkable.xml"
+        "source": "/home/artem/.android/build-cache/e2b7e0ded733648b39ffef3c712776ce38f12045/output/res/color-v23/abc_tint_btn_checkable.xml"
     },
     {
         "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/color-v23/abc_tint_seek_thumb.xml",
-        "source": "/home/artem/.android/build-cache/776f517a295af1a8175aedad0a793e3e85a508d0/output/res/color-v23/abc_tint_seek_thumb.xml"
+        "source": "/home/artem/.android/build-cache/e2b7e0ded733648b39ffef3c712776ce38f12045/output/res/color-v23/abc_tint_seek_thumb.xml"
     },
     {
         "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/color-v23/abc_tint_switch_track.xml",
-        "source": "/home/artem/.android/build-cache/776f517a295af1a8175aedad0a793e3e85a508d0/output/res/color-v23/abc_tint_switch_track.xml"
+        "source": "/home/artem/.android/build-cache/e2b7e0ded733648b39ffef3c712776ce38f12045/output/res/color-v23/abc_tint_switch_track.xml"
     },
     {
         "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/color-v23/abc_tint_edittext.xml",
-        "source": "/home/artem/.android/build-cache/776f517a295af1a8175aedad0a793e3e85a508d0/output/res/color-v23/abc_tint_edittext.xml"
+        "source": "/home/artem/.android/build-cache/e2b7e0ded733648b39ffef3c712776ce38f12045/output/res/color-v23/abc_tint_edittext.xml"
     },
     {
         "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/color-v23/abc_tint_switch_thumb.xml",
-        "source": "/home/artem/.android/build-cache/776f517a295af1a8175aedad0a793e3e85a508d0/output/res/color-v23/abc_tint_switch_thumb.xml"
+        "source": "/home/artem/.android/build-cache/e2b7e0ded733648b39ffef3c712776ce38f12045/output/res/color-v23/abc_tint_switch_thumb.xml"
     },
     {
         "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/color-v23/design_tint_password_toggle.xml",
-        "source": "/home/artem/.android/build-cache/75f07d396ea6b6c398876101a23c8e6b59f884dd/output/res/color-v23/design_tint_password_toggle.xml"
+        "source": "/home/artem/.android/build-cache/feb8f68a9bb20a99ea077e5745111fefc1059dae/output/res/color-v23/design_tint_password_toggle.xml"
     },
     {
         "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/color-v23/abc_tint_default.xml",
-        "source": "/home/artem/.android/build-cache/776f517a295af1a8175aedad0a793e3e85a508d0/output/res/color-v23/abc_tint_default.xml"
+        "source": "/home/artem/.android/build-cache/e2b7e0ded733648b39ffef3c712776ce38f12045/output/res/color-v23/abc_tint_default.xml"
     },
     {
         "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/color-v23/abc_btn_colored_borderless_text_material.xml",
-        "source": "/home/artem/.android/build-cache/776f517a295af1a8175aedad0a793e3e85a508d0/output/res/color-v23/abc_btn_colored_borderless_text_material.xml"
+        "source": "/home/artem/.android/build-cache/e2b7e0ded733648b39ffef3c712776ce38f12045/output/res/color-v23/abc_btn_colored_borderless_text_material.xml"
     },
     {
         "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/color-v23/abc_btn_colored_text_material.xml",
-        "source": "/home/artem/.android/build-cache/776f517a295af1a8175aedad0a793e3e85a508d0/output/res/color-v23/abc_btn_colored_text_material.xml"
+        "source": "/home/artem/.android/build-cache/e2b7e0ded733648b39ffef3c712776ce38f12045/output/res/color-v23/abc_btn_colored_text_material.xml"
     },
     {
         "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/color-v23/abc_color_highlight_material.xml",
-        "source": "/home/artem/.android/build-cache/776f517a295af1a8175aedad0a793e3e85a508d0/output/res/color-v23/abc_color_highlight_material.xml"
+        "source": "/home/artem/.android/build-cache/e2b7e0ded733648b39ffef3c712776ce38f12045/output/res/color-v23/abc_color_highlight_material.xml"
     }
 ]

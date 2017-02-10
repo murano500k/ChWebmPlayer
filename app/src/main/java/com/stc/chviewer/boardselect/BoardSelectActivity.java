@@ -23,7 +23,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static com.stc.chviewer.Constants.ACTION_SHOW_THREADS;
-import static com.stc.chviewer.Constants.EXTRA_BOARD_NAME;
+import static com.stc.chviewer.Constants.BOARD_TITLE_EXTRA;
 import static com.stc.chviewer.Constants.KEY_BOARD_NAME;
 
 public class BoardSelectActivity extends AppCompatActivity {
@@ -92,7 +92,7 @@ public class BoardSelectActivity extends AppCompatActivity {
         Log.d(TAG, "boardSelected: "+ boardName);
         Intent intent=new Intent(this, ThreadsActivity.class);
         intent.setAction(ACTION_SHOW_THREADS);
-        intent.putExtra(EXTRA_BOARD_NAME, boardName);
+        intent.putExtra(BOARD_TITLE_EXTRA, boardName);
         startActivity(intent);
 
     }

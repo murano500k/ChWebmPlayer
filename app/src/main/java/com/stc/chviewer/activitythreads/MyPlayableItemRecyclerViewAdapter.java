@@ -10,6 +10,8 @@ import com.stc.chviewer.PabloPicasso;
 import com.stc.chviewer.R;
 import com.stc.chviewer.activitythreads.model.PlayableItem;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class MyPlayableItemRecyclerViewAdapter extends RecyclerView.Adapter<MyPlayableItemRecyclerViewAdapter.ViewHolder> {
@@ -17,8 +19,9 @@ public class MyPlayableItemRecyclerViewAdapter extends RecyclerView.Adapter<MyPl
     private final List<PlayableItem> mValues;
     private final PlayableItemFragment.OnListFragmentInteractionListener  mListener;
 
-    public MyPlayableItemRecyclerViewAdapter(List<PlayableItem> items, PlayableItemFragment.OnListFragmentInteractionListener listener) {
-        mValues = items;
+    public MyPlayableItemRecyclerViewAdapter(PlayableItem[] items, PlayableItemFragment.OnListFragmentInteractionListener listener) {
+        mValues = new ArrayList<PlayableItem>();
+        Collections.addAll(mValues, items);
         mListener = listener;
     }
 

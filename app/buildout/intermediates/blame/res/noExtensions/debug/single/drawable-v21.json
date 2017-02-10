@@ -1,34 +1,34 @@
 [
     {
         "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/drawable-v21/avd_hide_password.xml",
-        "source": "/home/artem/.android/build-cache/75f07d396ea6b6c398876101a23c8e6b59f884dd/output/res/drawable-v21/avd_hide_password.xml"
+        "source": "/home/artem/.android/build-cache/feb8f68a9bb20a99ea077e5745111fefc1059dae/output/res/drawable-v21/avd_hide_password.xml"
     },
     {
         "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/drawable-v21/abc_edit_text_material.xml",
-        "source": "/home/artem/.android/build-cache/776f517a295af1a8175aedad0a793e3e85a508d0/output/res/drawable-v21/abc_edit_text_material.xml"
+        "source": "/home/artem/.android/build-cache/e2b7e0ded733648b39ffef3c712776ce38f12045/output/res/drawable-v21/abc_edit_text_material.xml"
     },
     {
         "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/drawable-v21/design_bottom_navigation_item_background.xml",
-        "source": "/home/artem/.android/build-cache/75f07d396ea6b6c398876101a23c8e6b59f884dd/output/res/drawable-v21/design_bottom_navigation_item_background.xml"
+        "source": "/home/artem/.android/build-cache/feb8f68a9bb20a99ea077e5745111fefc1059dae/output/res/drawable-v21/design_bottom_navigation_item_background.xml"
     },
     {
         "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/drawable-v21/avd_show_password.xml",
-        "source": "/home/artem/.android/build-cache/75f07d396ea6b6c398876101a23c8e6b59f884dd/output/res/drawable-v21/avd_show_password.xml"
+        "source": "/home/artem/.android/build-cache/feb8f68a9bb20a99ea077e5745111fefc1059dae/output/res/drawable-v21/avd_show_password.xml"
     },
     {
         "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/drawable-v21/abc_btn_colored_material.xml",
-        "source": "/home/artem/.android/build-cache/776f517a295af1a8175aedad0a793e3e85a508d0/output/res/drawable-v21/abc_btn_colored_material.xml"
+        "source": "/home/artem/.android/build-cache/e2b7e0ded733648b39ffef3c712776ce38f12045/output/res/drawable-v21/abc_btn_colored_material.xml"
     },
     {
         "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/drawable-v21/abc_action_bar_item_background_material.xml",
-        "source": "/home/artem/.android/build-cache/776f517a295af1a8175aedad0a793e3e85a508d0/output/res/drawable-v21/abc_action_bar_item_background_material.xml"
+        "source": "/home/artem/.android/build-cache/e2b7e0ded733648b39ffef3c712776ce38f12045/output/res/drawable-v21/abc_action_bar_item_background_material.xml"
     },
     {
         "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/drawable-v21/notification_action_background.xml",
-        "source": "/home/artem/.android/build-cache/776f517a295af1a8175aedad0a793e3e85a508d0/output/res/drawable-v21/notification_action_background.xml"
+        "source": "/home/artem/.android/build-cache/e2b7e0ded733648b39ffef3c712776ce38f12045/output/res/drawable-v21/notification_action_background.xml"
     },
     {
         "merged": "/home/artem/projects/ChWebmPlayer/app/buildout/intermediates/res/merged/noExtensions/debug/drawable-v21/design_password_eye.xml",
-        "source": "/home/artem/.android/build-cache/75f07d396ea6b6c398876101a23c8e6b59f884dd/output/res/drawable-v21/design_password_eye.xml"
+        "source": "/home/artem/.android/build-cache/feb8f68a9bb20a99ea077e5745111fefc1059dae/output/res/drawable-v21/design_password_eye.xml"
     }
 ]

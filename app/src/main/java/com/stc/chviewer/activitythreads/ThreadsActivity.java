@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Display;
+import android.view.Surface;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -15,18 +18,20 @@ import com.stc.chviewer.R;
 import com.stc.chviewer.activitythreads.model.PlayableItem;
 import com.stc.chviewer.activitythreads.model.ThreadItemsPlaylist;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static android.view.View.GONE;
-import static com.stc.chviewer.Constants.EXTRA_BOARD_NAME;
-import static com.stc.chviewer.Constants.EXTRA_THREAD_ID;
-import static com.stc.chviewer.Constants.EXTRA_THREAD_NAME;
-import static com.stc.chviewer.PlayerActivity.ACTION_VIEW_LIST;
-import static com.stc.chviewer.PlayerActivity.EXTENSION_LIST_EXTRA;
-import static com.stc.chviewer.PlayerActivity.URI_LIST_EXTRA;
+import static com.stc.chviewer.Constants.ACTION_PLAY_LIST;
+import static com.stc.chviewer.Constants.BOARD_TITLE_EXTRA;
+import static com.stc.chviewer.Constants.COLUMNS_LANDSCAPE;
+import static com.stc.chviewer.Constants.COLUMNS_PORTRAIT;
+import static com.stc.chviewer.Constants.ITEMS_LIST_EXTRA;
+import static com.stc.chviewer.Constants.ITEM_INDEX_EXTRA;
+import static com.stc.chviewer.Constants.THREAD_EXTRA;
 
 public class ThreadsActivity extends AppCompatActivity implements ThreadsContract.View, PlayableItemFragment.OnListFragmentInteractionListener, PlaylistItemFragment.OnListFragmentInteractionListener {
     private static final String TAG = "ThreadSelectActivity";
@@ -70,8 +75,8 @@ public class ThreadsActivity extends AppCompatActivity implements ThreadsContrac
 
     @Override
     public String getBoard() {
-        if(getIntent()==null || !getIntent().getExtras().containsKey(EXTRA_BOARD_NAME)) return null;
-        return getIntent().getStringExtra(EXTRA_BOARD_NAME);
+        if(getIntent()==null || !getIntent().getExtras().containsKey(BOARD_TITLE_EXTRA)) return null;
+        return getIntent().getStringExtra(BOARD_TITLE_EXTRA);
     }
 
     @Override
@@ -81,7 +86,7 @@ public class ThreadsActivity extends AppCompatActivity implements ThreadsContrac
             return;
         }
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        PlaylistItemFragment playlistItemFragment = new PlaylistItemFragment(this,threads);
+        PlaylistItemFragment playlistItemFragment = PlaylistItemFragment.newInstance((ArrayList<ThreadItemsPlaylist>) threads);
         transaction.replace(R.id.container, playlistItemFragment, PLAYLIST_FRAGMENT_TAG);
         transaction.commit();
 
@@ -89,16 +94,14 @@ public class ThreadsActivity extends AppCompatActivity implements ThreadsContrac
     }
 
     @Override
-    public void startPlayer(String board, String threadId, String threadText, String[] uris,String[] extentions) {
+    public void startPlayer(String board, ThreadItemsPlaylist threadItemsPlaylist, PlayableItem[] playableItems, int itemIndex) {
         Intent intent=new Intent(this, PlayerActivity.class);
-        intent.setAction(ACTION_VIEW_LIST);
-        intent.putExtra(URI_LIST_EXTRA, uris);
-        intent.putExtra(EXTENSION_LIST_EXTRA,extentions );
-        intent.putExtra(EXTRA_BOARD_NAME, board);
-        intent.putExtra(EXTRA_THREAD_ID, threadId);
-        intent.putExtra(EXTRA_THREAD_NAME, threadText);
+        intent.setAction(ACTION_PLAY_LIST);
+        intent.putExtra(ITEMS_LIST_EXTRA, playableItems);
+        intent.putExtra(THREAD_EXTRA,threadItemsPlaylist );
+        intent.putExtra(BOARD_TITLE_EXTRA, board);
+        intent.putExtra(ITEM_INDEX_EXTRA, itemIndex);
         startActivityForResult(intent, REQUEST_PLAY);
-
     }
 
     @Override
@@ -108,9 +111,13 @@ public class ThreadsActivity extends AppCompatActivity implements ThreadsContrac
     }
 
     @Override
-    public void loadThreadContent(ThreadItemsPlaylist thread, List<PlayableItem> items) {
+    public void loadThreadContent(ThreadItemsPlaylist thread, PlayableItem[] playableItems) {
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        PlayableItemFragment playableItemFragment = new PlayableItemFragment(this,thread.getThreadId(), items);
+        PlayableItemFragment playableItemFragment = PlayableItemFragment.newInstance(
+                isPortrait() ? COLUMNS_PORTRAIT : COLUMNS_LANDSCAPE,
+                playableItems,
+                0
+        );
         transaction.replace(R.id.container, playableItemFragment, PLAYABLE_FRAGMENT_TAG);
         transaction.commit();
     }
@@ -129,5 +136,10 @@ public class ThreadsActivity extends AppCompatActivity implements ThreadsContrac
     public void onListFragmentInteraction(ThreadItemsPlaylist item) {
         presenter.requestThreadContent(item.getThreadId());
 
+    }
+    private boolean isPortrait() {
+        Display display = ((WindowManager) getSystemService(WINDOW_SERVICE)).getDefaultDisplay();
+        int rotation = display.getRotation();
+        return (rotation == Surface.ROTATION_0 || rotation == Surface.ROTATION_180);
     }
 }
