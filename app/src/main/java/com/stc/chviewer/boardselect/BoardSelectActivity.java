@@ -34,6 +34,7 @@ public class BoardSelectActivity extends AppCompatActivity implements BoardListF
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board_select);
         ButterKnife.bind(this);
+
         setSupportActionBar(toolbar);
         searchView=new SearchView(this);
         searchView.setIconified(true);

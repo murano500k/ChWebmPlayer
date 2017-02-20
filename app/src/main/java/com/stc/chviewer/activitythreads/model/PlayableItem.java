@@ -4,7 +4,7 @@ package com.stc.chviewer.activitythreads.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.stc.chviewer.retro.model.File;
+import com.stc.chviewer.model.File;
 
 import static com.stc.chviewer.Constants.BASE_URL_2CH;
 

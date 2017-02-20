@@ -294,7 +294,7 @@ public class PlayerActivity extends Activity implements OnClickListener, ExoPlay
     }
   }
   private DataSource.Factory buildDataSourceFactory(boolean useBandwidthMeter) {
-    return ((DemoApplication) getApplication())
+    return ((ChApp) getApplication())
         .buildDataSourceFactory(useBandwidthMeter ? BANDWIDTH_METER : null);
   }
 

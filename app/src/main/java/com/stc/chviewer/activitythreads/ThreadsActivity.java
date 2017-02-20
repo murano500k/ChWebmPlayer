@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.stc.chviewer.ChApp;
+import com.stc.chviewer.ChRetroHelper;
 import com.stc.chviewer.PlayerActivity;
 import com.stc.chviewer.R;
 import com.stc.chviewer.activitythreads.model.PlayableItem;
@@ -23,8 +25,7 @@ import com.stc.chviewer.activitythreads.model.ThreadItemsPlaylist;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import javax.inject.Inject;
 
 import static android.view.View.GONE;
 import static com.stc.chviewer.Constants.ACTION_PLAY_LIST;
@@ -48,17 +49,22 @@ public class ThreadsActivity extends AppCompatActivity implements ThreadsContrac
 
     Button buttonRetry;
 
-    @BindView(R.id.toolbar)
     Toolbar toolbar;
 
     private ThreadsContract.Presenter presenter;
+
     SearchView searchView;
+
+    @Inject
+    public ChRetroHelper retroHelper;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_threads);
-        ButterKnife.bind(this);
+        toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         progressBar = (ProgressBar) findViewById(R.id.progress);
         progressBar.setVisibility(GONE);
@@ -67,6 +73,7 @@ public class ThreadsActivity extends AppCompatActivity implements ThreadsContrac
         buttonRetry=(Button) findViewById(R.id.buttonRetry);
         buttonRetry.setVisibility(GONE);
         buttonRetry.setOnClickListener(v -> start());
+        ((ChApp) getApplication()).component().inject(this);
         start();
     }
     private void start(){
@@ -83,6 +90,11 @@ public class ThreadsActivity extends AppCompatActivity implements ThreadsContrac
     public String getBoard() {
         if(getIntent()==null || !getIntent().getExtras().containsKey(BOARD_TITLE_EXTRA)) return null;
         return getIntent().getStringExtra(BOARD_TITLE_EXTRA);
+    }
+
+    @Override
+    public ChRetroHelper getRetroHelper() {
+        return retroHelper;
     }
 
     private void showSearch() {

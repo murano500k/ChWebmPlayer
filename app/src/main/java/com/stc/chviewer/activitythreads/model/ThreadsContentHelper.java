@@ -1,11 +1,11 @@
 package com.stc.chviewer.activitythreads.model;
 
-import com.stc.chviewer.retro.ChRetroHelper;
-import com.stc.chviewer.retro.model.Catalog;
-import com.stc.chviewer.retro.model.ChThread;
-import com.stc.chviewer.retro.model.ChThreadContent;
-import com.stc.chviewer.retro.model.File;
-import com.stc.chviewer.retro.model.Post;
+import com.stc.chviewer.ChRetroHelper;
+import com.stc.chviewer.model.Catalog;
+import com.stc.chviewer.model.ChThread;
+import com.stc.chviewer.model.ChThreadContent;
+import com.stc.chviewer.model.File;
+import com.stc.chviewer.model.Post;
 
 import java.util.ArrayList;
 import java.util.List;

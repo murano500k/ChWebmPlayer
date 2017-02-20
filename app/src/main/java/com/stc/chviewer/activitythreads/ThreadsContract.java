@@ -4,6 +4,7 @@ import com.stc.chviewer.BasePresenter;
 import com.stc.chviewer.BaseView;
 import com.stc.chviewer.activitythreads.model.PlayableItem;
 import com.stc.chviewer.activitythreads.model.ThreadItemsPlaylist;
+import com.stc.chviewer.ChRetroHelper;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ import java.util.List;
 public interface ThreadsContract {
     interface View extends BaseView<ThreadsContract.Presenter> {
         String getBoard();
+        ChRetroHelper getRetroHelper();
         void showBaseInfo(List<ThreadItemsPlaylist> threads, boolean sawError);
         void startPlayer(String board, ThreadItemsPlaylist threadItemsPlaylist, PlayableItem[] playableItems, int itemIndex );
         void showError(String errorText);

@@ -5,8 +5,8 @@ import android.util.Log;
 import com.stc.chviewer.activitythreads.model.PlayableItem;
 import com.stc.chviewer.activitythreads.model.ThreadItemsPlaylist;
 import com.stc.chviewer.activitythreads.model.ThreadsContentHelper;
-import com.stc.chviewer.retro.ChRetroHelper;
-import com.stc.chviewer.retro.model.Catalog;
+import com.stc.chviewer.ChRetroHelper;
+import com.stc.chviewer.model.Catalog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,15 +17,18 @@ import rx.android.schedulers.AndroidSchedulers;
 public class ThreadsPresenter implements ThreadsContract.Presenter {
     private static final String TAG = "ThreadsPresenter";
     private String board;
+
+
     private ThreadsContentHelper contentHelper;
     private ChRetroHelper retroHelper;
     private ThreadsContract.View view;
 
     public ThreadsPresenter(ThreadsContract.View view) {
+
         this.view=view;
         view.setPresenter(this);
         board=view.getBoard();
-        retroHelper= new ChRetroHelper();
+        retroHelper= view.getRetroHelper();
         start();
     }
 
