@@ -59,22 +59,9 @@ public class ThreadsContentHelper {
 
     public void loadContent(ChRetroHelper retroHelper){
         for(ThreadItemsPlaylist pls : threads){
-            retroHelper.getPosts(board, pls.getThreadId()).subscribe(new Observer<ChThreadContent>() {
-                @Override
-                public void onCompleted() {
-                    downloadStatus=1;
-                }
-
-                @Override
-                public void onError(Throwable e) {
-                    downloadStatus=-1;
-                }
-
-                @Override
-                public void onNext(ChThreadContent chThreadContent) {
-                    pls.setItemsCount(addItemsToThread(chThreadContent));
-                    pls.setLoaded(true);
-                }
+            retroHelper.getPosts(board, pls.getThreadId()).subscribe(chThreadContent -> {
+                pls.setItemsCount(addItemsToThread(chThreadContent));
+                pls.setLoaded(true);
             });
         }
     }

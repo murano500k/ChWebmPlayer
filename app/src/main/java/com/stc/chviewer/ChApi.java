@@ -4,9 +4,9 @@ package com.stc.chviewer;
 import com.stc.chviewer.model.Catalog;
 import com.stc.chviewer.model.ChThreadContent;
 
+import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
-import rx.Observable;
 
 /**
  * Created by artem on 2/8/17.

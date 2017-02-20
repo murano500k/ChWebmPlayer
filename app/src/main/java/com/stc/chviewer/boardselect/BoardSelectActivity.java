@@ -13,8 +13,6 @@ import android.widget.Toast;
 import com.stc.chviewer.R;
 import com.stc.chviewer.activitythreads.ThreadsActivity;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 import static com.stc.chviewer.Constants.ACTION_SHOW_THREADS;
 import static com.stc.chviewer.Constants.BOARD_TITLE_EXTRA;
@@ -25,7 +23,6 @@ public class BoardSelectActivity extends AppCompatActivity implements BoardListF
     SearchView searchView;
 
 
-    @BindView(R.id.toolbar)
     Toolbar toolbar;
 
     String[] data;
@@ -33,7 +30,7 @@ public class BoardSelectActivity extends AppCompatActivity implements BoardListF
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_board_select);
-        ButterKnife.bind(this);
+        toolbar=(Toolbar)findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
         searchView=new SearchView(this);

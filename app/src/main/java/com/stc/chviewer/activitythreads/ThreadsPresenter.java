@@ -2,17 +2,18 @@ package com.stc.chviewer.activitythreads;
 
 import android.util.Log;
 
+import com.stc.chviewer.ChRetroHelper;
 import com.stc.chviewer.activitythreads.model.PlayableItem;
 import com.stc.chviewer.activitythreads.model.ThreadItemsPlaylist;
 import com.stc.chviewer.activitythreads.model.ThreadsContentHelper;
-import com.stc.chviewer.ChRetroHelper;
 import com.stc.chviewer.model.Catalog;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import rx.Observer;
-import rx.android.schedulers.AndroidSchedulers;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.Observer;
+import io.reactivex.disposables.Disposable;
 
 public class ThreadsPresenter implements ThreadsContract.Presenter {
     private static final String TAG = "ThreadsPresenter";
@@ -31,30 +32,35 @@ public class ThreadsPresenter implements ThreadsContract.Presenter {
         retroHelper= view.getRetroHelper();
         start();
     }
-
     @Override
     public void start() {
         Log.d(TAG, "start: ");
         retroHelper.getCatalog(board)
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<Catalog>() {
-            @Override
-            public void onCompleted() {
-                view.showBaseInfo(contentHelper.getThreads(), contentHelper.getThreads()==null);
-            }
+                    @Override
+                    public void onSubscribe(Disposable d) {
 
-            @Override
-            public void onError(Throwable e) {
-                view.showError(e.getMessage());
+                    }
 
-            }
+                    @Override
+                    public void onNext(Catalog catalog) {
+                        contentHelper=new ThreadsContentHelper(board, catalog);
+                        contentHelper.loadContent(retroHelper);
+                    }
 
-            @Override
-            public void onNext(Catalog catalog) {
-                contentHelper=new ThreadsContentHelper(board, catalog);
-                contentHelper.loadContent(retroHelper);
-            }
-        });
+                    @Override
+                    public void onError(Throwable e) {
+                        view.showError(e.getMessage());
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        view.showBaseInfo(contentHelper.getThreads(), contentHelper.getThreads()==null);
+
+                    }
+                });
     }
 
     @Override
